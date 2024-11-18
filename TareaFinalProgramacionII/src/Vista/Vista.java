@@ -124,11 +124,11 @@ public class Vista extends JFrame {
 		txtyear.setBounds(100, 160, 180, 20);
 		contentPane.add(txtyear);
 		
-		JButton btnagregar = new JButton("Agregar");
+		btnagregar = new JButton("Agregar");
 		btnagregar.setBounds(296, 10, 120, 35);
 		contentPane.add(btnagregar);
 		
-		JButton btndel = new JButton("Eliminar");
+		btndel = new JButton("Eliminar");
 		btndel.setBounds(296, 55, 120, 35);
 		contentPane.add(btndel);
 		
@@ -136,9 +136,9 @@ public class Vista extends JFrame {
 		btnbuscar.setBounds(296, 100, 120, 35);
 		contentPane.add(btnbuscar);
 		
-		JButton btnmodificar = new JButton("Modificar");
-		btnmodificar.setBounds(296, 145, 120, 35);
-		contentPane.add(btnmodificar);
+		btnmod = new JButton("Modificar");
+		btnmod.setBounds(296, 145, 120, 35);
+		contentPane.add(btnmod);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 190, 414, 191);
@@ -159,11 +159,11 @@ public class Vista extends JFrame {
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
 		
-		JButton btnborrar = new JButton("Borrar");
-		btnborrar.setBounds(160, 430, 120, 35);
-		contentPane.add(btnborrar);
+		btnclear = new JButton("Borrar");
+		btnclear.setBounds(160, 430, 120, 35);
+		contentPane.add(btnclear);
 		
-		JButton btnsalir = new JButton("Salir");
+		btnsalir = new JButton("Salir");
 		btnsalir.setBounds(300, 430, 120, 35);
 		contentPane.add(btnsalir);
 	}
@@ -184,7 +184,7 @@ public class Vista extends JFrame {
             txtmat.requestFocus();
 		}
 		return vehiculo;
-		}
+	}
     public String getMat(){
         String mat;
         if (txtmat.getText().trim().isEmpty()) {
