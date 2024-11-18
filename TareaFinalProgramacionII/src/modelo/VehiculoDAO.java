@@ -17,7 +17,7 @@ public class VehiculoDAO {
     private Vehiculo vehiculo;
 
     public VehiculoDAO(ConexionBD conbd){
-        this.conbd=conbd;    
+        this.conbd=conbd;
     }
     public VehiculoDAO(){
 
@@ -43,10 +43,10 @@ public class VehiculoDAO {
             con.close();
         }catch(ClassNotFoundException cnfe){
             JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			
+
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			
+
         }
     }
     public void agregarVehiculo(Vehiculo vehiculo){
@@ -69,10 +69,10 @@ public class VehiculoDAO {
 			con.close();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			
+
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			
+
 		}
     }
     public boolean Consulta(String matr){
@@ -90,10 +90,10 @@ public class VehiculoDAO {
             }
         }catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			
+
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos");
-			
+
 		}
 		return existe;
     }
@@ -110,10 +110,10 @@ public class VehiculoDAO {
 			con.close();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			
+
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			
+
         }
     }
 
@@ -156,10 +156,10 @@ public class VehiculoDAO {
 			con.close();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			
+
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			
+
         }
     }
 }

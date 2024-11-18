@@ -1,6 +1,8 @@
 package Vista;
 import modelo.Vehiculo;
 import java.awt.EventQueue;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -161,20 +163,17 @@ public class Vista extends JFrame {
 	}
 
 	public Vehiculo getVehiculo(){
-		if(!(txtmat.equals("")&&txtmarca.equals("")&&txtmod.equals("")&&txtmalet.equals("")&&txtpuer.equals("")&&txtyear.equals(""))){}
+		if(!(txtmat.equals("")&&txtmarca.equals("")&&txtmod.equals("")&&txtmalet.equals("")&&txtplaz.equals("")&&txtpuer.equals("")&&txtyear.equals(""))){}
 			Vehiculo vehiculo= new Vehiculo(
 				txtmat.getText(),
 				txtmarca.getText(),
 				txtmod.getText(),
 				txtmalet.getText(),
+				Integer.parseInt(txtplaz.getText()),
 				Integer.parseInt(txtpuer.getText()),
-				Integer. parseInt(txtyear.getText())
-				);
-				);
-		}
+				Integer. parseInt(txtyear.getText()));
 		return vehiculo;
-	}
-    
+		}
     public String getMat(){
         String mat;
         if (txtmat.getText().trim().isEmpty()) {
@@ -184,7 +183,17 @@ public class Vista extends JFrame {
         {
         mat = txtmat.getText();
 }       return mat;
+	}
+public void cargar(Vehiculo vehiculo){
+txtmat.setText(String.valueOf(vehiculo.getMat()));
+txtmarca.setText(String.valueOf(vehiculo.getMarca()));
+txtmod.setText(String.valueOf(vehiculo.getMod()));
+txtmalet.setText(String.valueOf(vehiculo.getMalet()));
+txtplaz.setText(String.valueOf(vehiculo.getPlaz()));
+txtpuer.setText(String.valueOf(vehiculo.getPuer()));
+txtyear.setText(String.valueOf(vehiculo.getYear()));
 }
+
 public void borrar(){
     txtmat.setText("");
     txtmarca.setText("");
