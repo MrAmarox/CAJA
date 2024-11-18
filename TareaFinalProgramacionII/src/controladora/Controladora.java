@@ -54,13 +54,15 @@ public class Controladora implements ActionListener, MouseListener {
 		String objeto= e.getActionCommand();
 		switch(objeto) {
 			case "Ingresar":
-			if (!(vista.getMat().equals(""))) {
-				if (vehiculoDAO.Consulta(vista.getMat())) {
-					JOptionPane.showMessageDialog(null, "Matrícula existente.");
-                }else{
-                    vehiculoDAO.agregarVehiculo(vista.getVehiculo());
-				}
-			}
+			    if (!(vista.getMat().equals(""))) {
+			    	if (vehiculoDAO.Consulta(vista.getMat())) {
+			    		JOptionPane.showMessageDialog(null, "Matrícula existente.");
+                   }else{
+                       vehiculoDAO.agregarVehiculo(vista.getVehiculo());
+                       vista.borrar();
+                       vista.cargarTabla(vehiculoDAO.getVehiculos());
+		    	    }
+		    	}
 				break;
 			case "Modificar":
 				break;
@@ -69,6 +71,7 @@ public class Controladora implements ActionListener, MouseListener {
 			case "Buscar":
 			    if (vehiculoDAO.Consulta(vista.getMat())){
 			    	vista.cargar(vehiculoDAO.getVehiculo(vista.getMat()));
+                    vista.buscar();
 		    	}else{
 		    		JOptionPane.showMessageDialog(null, "Ingrese una matrícula existente.");
 	    		}

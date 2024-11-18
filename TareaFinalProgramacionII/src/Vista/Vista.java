@@ -26,7 +26,7 @@ public class Vista extends JFrame {
 	private JTextField txtplaz;
 	private JTextField txtyear;
 	private JTable table;
-
+	private JButton btnagregar, btndel, btnmod, btnbuscar, btnclear, btnsalir, btnmostrar;
 	/**
 	 * Launch the application.
 	 */
@@ -119,21 +119,21 @@ public class Vista extends JFrame {
 		txtyear.setBounds(100, 160, 180, 20);
 		contentPane.add(txtyear);
 		
-		JButton btnagregar = new JButton("Agregar");
+		btnagregar = new JButton("Agregar");
 		btnagregar.setBounds(296, 10, 120, 35);
 		contentPane.add(btnagregar);
 		
-		JButton btndel = new JButton("Eliminar");
+		btndel = new JButton("Eliminar");
 		btndel.setBounds(296, 55, 120, 35);
 		contentPane.add(btndel);
 		
-		JButton btnobuscar = new JButton("Buscar");
-		btnobuscar.setBounds(296, 100, 120, 35);
-		contentPane.add(btnobuscar);
+		btnmod = new JButton("Buscar");
+		btnmod.setBounds(296, 100, 120, 35);
+		contentPane.add(btnmod);
 		
-		JButton btnmodificar = new JButton("Modificar");
-		btnmodificar.setBounds(296, 145, 120, 35);
-		contentPane.add(btnmodificar);
+		btnmod = new JButton("Modificar");
+		btnmod.setBounds(296, 145, 120, 35);
+		contentPane.add(btnmod);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 190, 414, 191);
@@ -149,15 +149,15 @@ public class Vista extends JFrame {
 			}
 		));
 		
-		JButton btnmostrar = new JButton("Mostrar");
+		btnmostrar = new JButton("Mostrar");
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
 		
-		JButton btnborrar = new JButton("Borrar");
-		btnborrar.setBounds(160, 430, 120, 35);
-		contentPane.add(btnborrar);
+		btnclear = new JButton("Borrar");
+		btnclear.setBounds(160, 430, 120, 35);
+		contentPane.add(btnclear);
 		
-		JButton btnsalir = new JButton("Salir");
+		btnsalir = new JButton("Salir");
 		btnsalir.setBounds(300, 430, 120, 35);
 		contentPane.add(btnsalir);
 	}
@@ -178,38 +178,43 @@ public class Vista extends JFrame {
             txtmat.requestFocus();
 		}
 		return vehiculo;
-		}
+	}
     public String getMat(){
         String mat;
         if (txtmat.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese una matrícula");
             mat="";
-        }else
-        {
-        mat = txtmat.getText();
-}       return mat;
+        }else{
+        	mat = txtmat.getText();
+		}       	
+		return mat;
 	}
-public void cargar(Vehiculo vehiculo){
-txtmat.setText(String.valueOf(vehiculo.getMat()));
-txtmarca.setText(String.valueOf(vehiculo.getMarca()));
-txtmod.setText(String.valueOf(vehiculo.getMod()));
-txtmalet.setText(String.valueOf(vehiculo.getMalet()));
-txtplaz.setText(String.valueOf(vehiculo.getPlaz()));
-txtpuer.setText(String.valueOf(vehiculo.getPuer()));
-txtyear.setText(String.valueOf(vehiculo.getYear()));
-}
+	public void cargar(Vehiculo vehiculo){
+		txtmat.setText(String.valueOf(vehiculo.getMat()));
+		txtmarca.setText(String.valueOf(vehiculo.getMarca()));
+		txtmod.setText(String.valueOf(vehiculo.getMod()));
+		txtmalet.setText(String.valueOf(vehiculo.getMalet()));
+		txtplaz.setText(String.valueOf(vehiculo.getPlaz()));
+		txtpuer.setText(String.valueOf(vehiculo.getPuer()));
+		txtyear.setText(String.valueOf(vehiculo.getYear()));
+	}
 
-public void borrar(){
-    txtmat.setText("");
-    txtmarca.setText("");
-    txtmod.setText("");
-    txtpuer.setText("");
-    txtplaz.setText("");
-    txtmalet.setText("");
-    txtyear.setText("");
-}
+	public void borrar(){
+		txtmat.setText("");
+  		txtmarca.setText("");
+ 		txtmod.setText("");
+  		txtpuer.setText("");
+ 		txtplaz.setText("");
+		txtmalet.setText("");
+		txtyear.setText("");
+	}
 
-public void salir(){
-    System.exit(0);
-}
+	public void salir(){
+    	System.exit(0);
+	}
+
+	public void buscar(){
+		btnagregar.setEnabled(false);
+		
+	}
 }

@@ -135,7 +135,7 @@ public class VehiculoDAO {
         }
         return vehiculos;
     }
-    public void getVehiculo(String mat){
+    public Vehiculo getVehiculo(String mat){
         String sql="SELECT * FROM vehiculo WHERE matricula="+mat;
         try{
             con= conbd.getConnection();
@@ -161,5 +161,6 @@ public class VehiculoDAO {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
 
         }
+        return vehiculo;
     }
 }
