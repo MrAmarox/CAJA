@@ -1,86 +1,86 @@
 package modelo;
 
 public class Vehiculo {
-    private String matricula, marca, modelo, maletero;
-    private int puertas, plazas, anio;
+    private String mat, marca, mod, malet;
+    private int puer, plazas, year;
 
 public Vehiculo(){
-    matricula="";
+    mat="";
     marca="";
-    modelo="";
-    maletero="";
-    puertas= 0;
+    mod="";
+    malet="";
+    puer= 0;
     plazas= 0;
-    anio= 0;
+    year= 0;
 }
 
-public Vehiculo(String matricula, String marca, String modelo, String maletero, int puertas, int plazas, int anio) {
-    this.matricula = matricula;
+public Vehiculo(String mat, String marca, String mod, String malet, int puer, int plazas, int year) {
+    this.mat = mat;
     this.marca = marca;
-    this.modelo = modelo;
-    this.maletero = maletero;
-    this.puertas = puertas;
-    this.plazas = plazas;
-    this.anio = anio;
+    this.mod = mod;
+    this.malet = malet;
+    this.puer = puer;
+    this.plaz = plaz;
+    this.year = year;
 }
 
-public String getMatricula() {
-    return matricula;
+public String getMat() {
+    return mat;
 }
 
-public String getMarca() {
+public String getMar() {
     return marca;
 }
 
-public String getModelo() {
-    return modelo;
+public String getMod() {
+    return mod;
 }
 
-public String getMaletero() {
-    return maletero;
+public String getMalet() {
+    return malet;
 }
 
-public int getPuertas() {
-    return puertas;
+public int getPuer() {
+    return puer;
 }
 
-public int getPlazas() {
-    return plazas;
+public int getPlaz() {
+    return plaz;
 }
 
-public int getAnio() {
-    return anio;
+public int getYear() {
+    return year;
 }
 
-public void setMatricula(String matricula) {
-    this.matricula = matricula;
+public void setMat(String mat) {
+    this.mat = mat;
 }
 
-public void setMarca(String marca) {
+public void setMar(String marca) {
     this.marca = marca;
 }
 
-public void setModelo(String modelo) {
-    this.modelo = modelo;
+public void setMod(String mod) {
+    this.mod = mod;
 }
 
-public void setMaletero(String maletero) {
-    this.maletero = maletero;
+public void setMaletero(String malet) {
+    this.malet = malet;
 }
 
-public void setPuertas(int puertas) {
-    this.puertas = puertas;
+public void setPuer(int puer) {
+    this.puer = puer;
 }
 
-public void setPlazas(int plazas) {
-    this.plazas = plazas;
+public void setPlaz(int plaz) {
+    this.plaz = plaz;
 }
 
-public void setAnio(int anio) {
-    this.anio = anio;
+public void setYear(int year) {
+    this.year = year;
 }
 public void Mostrar(){
-    System.out.println("Marca: "+marca+"\nModelo: "+modelo+"\nMaletero: "+maletero+"\nCantidad de puertas: "+puertas+"\nPlazas: "+plazas+"\nAño: "+anio);
+    System.out.println("Marca: "+marca+"\nModelo: "+mod+"\nMaletero: "+malet+"\nCantidad de puertas: "+puer+"\nPlazas: "+plaz+"\nAño: "+year+"\nMatricula: "+mat);
 }
 }
 

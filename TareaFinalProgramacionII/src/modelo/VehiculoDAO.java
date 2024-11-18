@@ -26,12 +26,14 @@ public class VehiculoDAO {
             conexion=conexionbd.getconnection();
             pstmt=conexion.prepareStatement(sql);
             pstmt.setString(1, vehiculo.getMarca()));
-            pstmt.setString(2, vehiculo.getModelo());
-            pstmt.setString(3, vehiculo.getPuertas());
-            pstmt.setString(4, vehiculo.getPlazas());
-            pstmt.setString(5, vehiculo.getMaletero());
+            pstmt.setString(2, vehiculo.getMod());
+            pstmt.setString(3, vehiculo.getPuer());
+            pstmt.setString(4, vehiculo.getPlaz());
+            pstmt.setString(5, vehiculo.getMalet());
             pstmt.setString(6, vehiculo.getYear());
-            pstmt.setString(7, vehiculo.getMatricula());
+            pstmt.setString(7, vehiculo.getMat());
+            int resultado= pstmt.executeUpdate();
+            if(resultado!=0 )
         }
     }
 }
