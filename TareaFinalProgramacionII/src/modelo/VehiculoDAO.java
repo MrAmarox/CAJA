@@ -1,9 +1,10 @@
 package modelo;
 
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class VehiculoDAO {
@@ -24,7 +25,7 @@ public class VehiculoDAO {
     public void modVehiculo(Vehiculo vehiculo){
         String sql="UPDATE Vehiculo SET marca=?, modelo=?, puertas=?, plazas=?, maletero=?, año=? where matricula=?";
         try{
-            con=conbd.getconnection();
+            con=conbd.getConnection();
             pstmt=con.prepareStatement(sql);
             pstmt.setString(1, vehiculo.getMarca());
             pstmt.setString(2, vehiculo.getMod());
@@ -41,10 +42,10 @@ public class VehiculoDAO {
             con.close();
         }catch(ClassNotFoundException cnfe){
             JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			cnfe.printStackTrace();
+			
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			sqle.printStackTrace();
+			
         }
     }
     public void agregarVehiculo(Vehiculo vehiculo){
@@ -55,8 +56,8 @@ public class VehiculoDAO {
 			pstmt.setString(1, vehiculo.getMat());
 			pstmt.setString(2, vehiculo.getMarca());
 			pstmt.setString(3, vehiculo.getMod());
-			pstmt.setString(4, vehiculo.getPuer());
-            pstmt.setString(5, vehiculo.getPlaz());
+			pstmt.setInt(4, vehiculo.getPuer());
+            pstmt.setInt(5, vehiculo.getPlaz());
             pstmt.setString(6, vehiculo.getMalet());
             pstmt.setInt(7, vehiculo.getYear());
 			int res=pstmt.executeUpdate();
@@ -67,10 +68,10 @@ public class VehiculoDAO {
 			con.close();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			cnfe.printStackTrace();
+			
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			sqle.printStackTrace();
+			
 		}
     }
     public boolean Consulta(String matr){
@@ -81,17 +82,17 @@ public class VehiculoDAO {
             stmt=con.createStatement();
             rs= stmt.executeQuery(sql);
             if(rs.next()){
-                int matCheck= rs.getString("matricula");
-                if(matCheck==mat){
+                String matCheck= rs.getString("matricula");
+                if(matCheck.equals(matr)){
                     existe=true;
                 }
             }
         }catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			cnfe.printStackTrace();
+			
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos");
-			sqle.printStackTrace();
+			
 		}
 		return existe;
     }
@@ -108,37 +109,37 @@ public class VehiculoDAO {
 			con.close();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			cnfe.printStackTrace();
+			
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			sqle.printStackTrace();
+			
         }
     }
     public void getVehiculo(String mat){
         String sql="SELECT * FROM vehiculo WHERE matricula="+mat;
         try{
-            conexion= conexionbd.getConnection();
-			stmt= conexion.createStatement();
-			rs.stmt.executeQuery(sql);
+            con= conbd.getConnection();
+			stmt= con.createStatement();
+			rs= stmt.executeQuery(sql);
             if(rs.next()){
                 vehiculo= new Vehiculo(
-                    rs.getString(1);
-                    rs.getString(2);
-                    rs.getString(3);
-                    rs.getString(6);
-                    rs.getString(4);
-                    rs.getString(5);
-                    rs.getInt(7);
-                )
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(6),
+                    rs.getInt(4),
+                    rs.getInt(5),
+                    rs.getInt(7)
+                );
             }
 			stmt.close();
-			conexion.close();
+			con.close();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-			cnfe.printStackTrace();
+			
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			sqle.printStackTrace();
+			
         }
     }
 }
