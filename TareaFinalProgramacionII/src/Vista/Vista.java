@@ -1,6 +1,7 @@
 package Vista;
 import modelo.Vehiculo;
 import java.awt.EventQueue;
+import java.awt.ScrollPane;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -26,7 +27,11 @@ public class Vista extends JFrame {
 	private JTextField txtplaz;
 	private JTextField txtyear;
 	private JTable table;
-
+	private DefaultTableModel model;
+	private JButton btnagregar, btndel, btnbuscar, btnmodificar, btnmostrar, btnborrar, btnsalir;
+	private JScrollPane scrollpane;
+	private JPanel contentpane;
+	private Vehiculo vehiculo;
 	/**
 	 * Launch the application.
 	 */
@@ -127,9 +132,9 @@ public class Vista extends JFrame {
 		btndel.setBounds(296, 55, 120, 35);
 		contentPane.add(btndel);
 		
-		JButton btnobuscar = new JButton("Buscar");
-		btnobuscar.setBounds(296, 100, 120, 35);
-		contentPane.add(btnobuscar);
+		JButton btnbuscar = new JButton("Buscar");
+		btnbuscar.setBounds(296, 100, 120, 35);
+		contentPane.add(btnbuscar);
 		
 		JButton btnmodificar = new JButton("Modificar");
 		btnmodificar.setBounds(296, 145, 120, 35);
@@ -141,14 +146,15 @@ public class Vista extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Matricula", "Marca", "Modelo", "Maletero", "Puertas", "Plazas", "A\u00F1o"
-			}
-		));
-		
+		model = new DefaultTableModel();
+		model.addColumn("Matricula");
+		model.addColumn("Marca");
+		model.addColumn("Modelo");
+		model.addColumn("Maletero");
+		model.addColumn("Puertas");
+		model.addColumn("Plazas");
+		model.addColumn("Año");
+
 		JButton btnmostrar = new JButton("Mostrar");
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
@@ -202,9 +208,9 @@ public class Vista extends JFrame {
 			if(vehiculos.size() == 0){
 				btnmodificar.setEnabled(false);
 			}
-			modelo.setRowCount(0);
+			model.setRowCount(0);
 			for(int i = 0; i < vehiculos.size(); i++){
-				Vehiculo[] fila = {
+				Object[] fila = {
 					vehiculos.get(i).getMat(),
 					vehiculos.get(i).getMarca(),
 					vehiculos.get(i).getMod(),
@@ -213,7 +219,7 @@ public class Vista extends JFrame {
 					vehiculos.get(i).getPuer(),
 					vehiculos.get(i).getYear()
 				};
-				modelo.addRow(fila);
+			model.addRow(fila);
 			}
 		}
 
@@ -229,5 +235,13 @@ public class Vista extends JFrame {
 
 		public void salir(){
 			System.exit(0);
+		}
+		public void inicio(){
+			btnagregar.setEnabled(true);
+			btnmodificar.setEnabled(false);
+			btndel.setEnabled(true);
+			btnbuscar.setEnabled(true);
+			btnborrar.setEnabled(true);
+			btnsalir.setEnabled(true);
 		}
 }
