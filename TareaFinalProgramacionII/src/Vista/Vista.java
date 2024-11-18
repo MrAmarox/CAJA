@@ -185,36 +185,49 @@ public class Vista extends JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese una matrícula");
             mat="";
         }else{
-        	mat = txtmat.getText();
-		}       	
-		return mat;
+        mat = txtmat.getText();
+}       return mat;
 	}
-	public void cargar(Vehiculo vehiculo){
-		txtmat.setText(String.valueOf(vehiculo.getMat()));
-		txtmarca.setText(String.valueOf(vehiculo.getMarca()));
-		txtmod.setText(String.valueOf(vehiculo.getMod()));
-		txtmalet.setText(String.valueOf(vehiculo.getMalet()));
+		public void cargar(Vehiculo vehiculo){
+		txtmat.setText(vehiculo.getMat());
+		txtmarca.setText(vehiculo.getMarca());
+		txtmod.setText(vehiculo.getMod());
+		txtmalet.setText(vehiculo.getMalet());
 		txtplaz.setText(String.valueOf(vehiculo.getPlaz()));
 		txtpuer.setText(String.valueOf(vehiculo.getPuer()));
 		txtyear.setText(String.valueOf(vehiculo.getYear()));
-	}
+		}
 
-	public void borrar(){
-		txtmat.setText("");
-  		txtmarca.setText("");
- 		txtmod.setText("");
-  		txtpuer.setText("");
- 		txtplaz.setText("");
-		txtmalet.setText("");
-		txtyear.setText("");
-	}
+		public void cargarTabla(ArrayList vehiculos){
+			if(vehiculos.size() == 0){
+				btnmodificar.setEnabled(false);
+			}
+			modelo.setRowCount(0);
+			for(int i = 0; i < vehiculos.size(); i++){
+				Vehiculo[] fila = {
+					vehiculos.get(i).getMat(),
+					vehiculos.get(i).getMarca(),
+					vehiculos.get(i).getMod(),
+					vehiculos.get(i).getMalet(),
+					vehiculos.get(i).getPlaz(),
+					vehiculos.get(i).getPuer(),
+					vehiculos.get(i).getYear()
+				};
+				modelo.addRow(fila);
+			}
+		}
 
-	public void salir(){
-    	System.exit(0);
-	}
+		public void borrar(){
+			txtmat.setText("");
+			txtmarca.setText("");
+			txtmod.setText("");
+			txtpuer.setText("");
+			txtplaz.setText("");
+			txtmalet.setText("");
+			txtyear.setText("");
+		}
 
-	public void buscar(){
-		btnagregar.setEnabled(false);
-		
-	}
+		public void salir(){
+			System.exit(0);
+		}
 }
