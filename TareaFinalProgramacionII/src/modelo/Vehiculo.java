@@ -2,7 +2,7 @@ package modelo;
 
 public class Vehiculo {
     private String mat, marca, mod, malet;
-    private int puer, plazas, year; //tengo un TOC con anio :)
+    private int puer, plaz, year; //tengo un TOC con anio :)
 
 public Vehiculo(){
     mat="";
@@ -10,13 +10,13 @@ public Vehiculo(){
     mod="";
     malet="";
     puer= 0;
-    plazas= 0;
+    plaz= 0;
     year= 0;
 }
 
 
 
-public Vehiculo(String mat, String marca, String mod, String malet, int puer, int plazas, int year) {
+public Vehiculo(String mat, String marca, String mod, String malet, int puer, int plaz, int year) {
     this.mat = mat;
     this.marca = marca;
     this.mod = mod;
