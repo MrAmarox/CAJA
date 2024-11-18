@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class VehiculoDAO {
@@ -116,7 +117,18 @@ public class VehiculoDAO {
         }
     }
 
-    public ArrayList>Vehiculo
+    public ArrayList<Vehiculo>getVehiculos(){
+        ArrayList<Vehiculo> vehiculos= new ArrayList();
+        String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año";
+        try {
+            con= conbd.getConnection();
+            stmt= con.createStatement();
+            rs= stmt.executeQuery();
+        }catch(ClassNotFoundException cnfe) {
+
+        }
+        return vehiculos;
+    }
     public void getVehiculo(String mat){
         String sql="SELECT * FROM vehiculo WHERE matricula="+mat;
         try{
