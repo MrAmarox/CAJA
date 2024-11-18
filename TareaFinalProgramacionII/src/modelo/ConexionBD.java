@@ -25,5 +25,4 @@ class ConexionBD{
 		conexion=DriverManager.getConnection(url,user,pswrd);
 		return conexion;
 	} 
-	
 }
