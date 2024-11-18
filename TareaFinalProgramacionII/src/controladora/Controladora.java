@@ -18,47 +18,50 @@ public class Controladora implements ActionListener, MouseListener {
 		this.Vista= Vista;
 		this.vehiculoDAO= vehiculoDAO;
 	}
-	
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String objeto= e.getActionCommand();
 		switch(objeto) {
 			case "Ingresar":
-				if (true) {
-                    
-                }
+			if (Vista.getMat()!="") {
+				if (vehiculoDAO.Consulta(Vista.getMat())) {
+					JOptionPane.showMessageDialog(null, "Matrícula existente.");
+                }else{
+					
+				}
+			}
 				break;
 			case "Modificar":
-				
 				break;
 			case "Eliminar":
 				break;
@@ -74,6 +77,6 @@ public class Controladora implements ActionListener, MouseListener {
 			default:
 				JOptionPane.showMessageDialog(null,  "Evento no identificado.");
 		}
-		
+
 	}
 }

@@ -11,7 +11,7 @@ class ConexionBD{
 	private String pswrd="root";
 	private String url="jdbc:mariadb://localhost/"+ bd;
 	private ConexionBD instance=null;
-	
+
 	private ConexionBD() {
 	}
 	public ConexionBD getInstance() {
@@ -24,5 +24,5 @@ class ConexionBD{
 		Class.forName("org.mariadb.jdbc.Driver");
 		conexion=DriverManager.getConnection(url,user,pswrd);
 		return conexion;
-	} 
+	}
 }

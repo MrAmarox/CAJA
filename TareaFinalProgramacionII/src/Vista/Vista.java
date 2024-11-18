@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -78,7 +79,7 @@ public class Vista extends JFrame {
 		contentPane.add(lblplaz);
 		
 		JLabel lblyear = new JLabel("Año");
-		lblyear.setBounds(10, 161, 70, 20);
+		lblyear.setBounds(10, 160, 70, 20);
 		contentPane.add(lblyear);
 		
 		txtmat = new JTextField();
@@ -158,4 +159,15 @@ public class Vista extends JFrame {
 		btnsalir.setBounds(300, 430, 120, 35);
 		contentPane.add(btnsalir);
 	}
+    
+    public String getMat(){
+        String mat;
+        if (txtmat.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese una matrícula");
+            mat="";
+        }else
+        {
+        mat = txtmat.getText();
+}       return mat;
+}
 }
