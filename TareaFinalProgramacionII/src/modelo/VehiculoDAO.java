@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 public class VehiculoDAO {
     private Statement stmt= null;
@@ -11,7 +12,7 @@ public class VehiculoDAO {
 	private ResultSet rs= null;
 	private Connection con= null;
 	private ConexionBD conbd= null;
-    private Vehiculo vehiculo:
+    private Vehiculo vehiculo;
 
     public VehiculoDAO(ConexionBD conbd){
         this.conbd=conbd;    
@@ -25,12 +26,12 @@ public class VehiculoDAO {
         try{
             con=conbd.getconnection();
             pstmt=con.prepareStatement(sql);
-            pstmt.setString(1, vehiculo.getMarca()));
+            pstmt.setString(1, vehiculo.getMarca());
             pstmt.setString(2, vehiculo.getMod());
-            pstmt.setString(3, vehiculo.getPuer());
-            pstmt.setString(4, vehiculo.getPlaz());
+            pstmt.setInt(3, vehiculo.getPuer());
+            pstmt.setInt(4, vehiculo.getPlaz());
             pstmt.setString(5, vehiculo.getMalet());
-            pstmt.setString(6, vehiculo.getYear());
+            pstmt.setInt(6, vehiculo.getYear());
             pstmt.setString(7, vehiculo.getMat());
             int res= pstmt.executeUpdate();
             if(res!=0 ){

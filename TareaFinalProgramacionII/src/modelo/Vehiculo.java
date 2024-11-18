@@ -30,7 +30,7 @@ public String getMat() {
     return mat;
 }
 
-public String getMar() {
+public String getMarca() {
     return marca;
 }
 
