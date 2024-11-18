@@ -170,4 +170,17 @@ public class Vista extends JFrame {
         mat = txtmat.getText();
 }       return mat;
 }
+public void borrar(){
+    txtmat.setText("");
+    txtmarca.setText("");
+    txtmod.setText("");
+    txtpuer.setText("");
+    txtplaz.setText("");
+    txtmalet.setText("");
+    txtyear.setText("");
+}
+
+public void salir(){
+    System.exit(0);
+}
 }

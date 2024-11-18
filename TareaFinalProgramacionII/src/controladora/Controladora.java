@@ -57,7 +57,7 @@ public class Controladora implements ActionListener, MouseListener {
 				if (vehiculoDAO.Consulta(Vista.getMat())) {
 					JOptionPane.showMessageDialog(null, "Matrícula existente.");
                 }else{
-					
+
 				}
 			}
 				break;
@@ -66,10 +66,19 @@ public class Controladora implements ActionListener, MouseListener {
 			case "Eliminar":
 				break;
 			case "Buscar":
+			JOptionPane.showMessageDialog(null, "Ingrese la matrícula del vehiculo: ");
+			if (vehiculoDAO.Consulta(mat)){
+				Vista.cargar(vehiculoDAO.getVehiculo(mat));
+				Vista.buscar();
+			}else{
+				JOptionPane.showMessageDialog(null, "Ingrese una matrícula existente.");
+			}
 				break;
 			case "Mostrar":
 				break;
+
 			case "Borrar":
+			Vista.borrar();
 				break;
 			case "Salir":
 				Vista.salir();
