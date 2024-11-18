@@ -97,8 +97,8 @@ public class VehiculoDAO {
 		}
 		return existe;
     }
-    public void delVehiculo(String mat){
-        String sql="DELETE FROM vehiculos WHERE matricula="+mat;
+    public void delVehiculo(String matr){
+        String sql="DELETE FROM vehiculos WHERE matricula="+matr;
         try{
             con= conbd.getConnection();
 			stmt= con.createStatement();
@@ -123,8 +123,10 @@ public class VehiculoDAO {
         try {
             con= conbd.getConnection();
             stmt= con.createStatement();
-            rs= stmt.executeQuery();
+            rs= stmt.executeQuery(sql);
         }catch(ClassNotFoundException cnfe) {
+            JOptionPane.showMessageDialog(null, );
+        }catch(SQLException sqle){
 
         }
         return vehiculos;
