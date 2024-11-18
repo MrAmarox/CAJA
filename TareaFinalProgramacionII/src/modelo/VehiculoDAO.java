@@ -124,10 +124,14 @@ public class VehiculoDAO {
             con= conbd.getConnection();
             stmt= con.createStatement();
             rs= stmt.executeQuery(sql);
+            while(rs.next()){
+                vehiculo=new Vehiculo(rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"), rs.getString("maletero"), rs.getInt("puertas"), rs.getInt("plazas"), rs.getInt("año"));
+                vehiculos.add(vehiculo);
+            }
         }catch(ClassNotFoundException cnfe) {
-            JOptionPane.showMessageDialog(null, );
+            JOptionPane.showMessageDialog(null, "Error al cargar los Drivers.");
         }catch(SQLException sqle){
-
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
         }
         return vehiculos;
     }
