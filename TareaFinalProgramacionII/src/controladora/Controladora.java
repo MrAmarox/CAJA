@@ -5,17 +5,18 @@ import Vista.Vista;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import modelo.Vehiculo;
-
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import org.w3c.dom.events.MouseEvent;
 
 public class Controladora implements ActionListener, MouseListener {
 
-    private Vista Vista;
+    private Vista vista;
 	private VehiculoDAO vehiculoDAO;
 	private Vehiculo vehiculo;
 
-	public Controladora(Vista Vista, VehiculoDAO vehiculoDAO) {
-		this.Vista= Vista;
+	public Controladora(Vista vista, VehiculoDAO vehiculoDAO) {
+		this.vista= vista;
 		this.vehiculoDAO= vehiculoDAO;
 	}
 
@@ -53,11 +54,11 @@ public class Controladora implements ActionListener, MouseListener {
 		String objeto= e.getActionCommand();
 		switch(objeto) {
 			case "Ingresar":
-			if (Vista.getMat()!="") {
-				if (vehiculoDAO.Consulta(Vista.getMat())) {
+			if (!(vista.getMat().equals(""))) {
+				if (vehiculoDAO.Consulta(vista.getMat())) {
 					JOptionPane.showMessageDialog(null, "Matrícula existente.");
                 }else{
-
+                    vehiculoDAO.agregarVehiculo(vista.getVehiculo());
 				}
 			}
 				break;
@@ -66,23 +67,50 @@ public class Controladora implements ActionListener, MouseListener {
 			case "Eliminar":
 				break;
 			case "Buscar":
-			String mat = Vista.getMat();
-			if(Vista.getMat()!=""){
-				
-			}
-				break;
+			    if (vehiculoDAO.Consulta(vista.getMat())){
+			    	vista.cargar(vehiculoDAO.getVehiculo(vista.getMat()));
+		    	}else{
+		    		JOptionPane.showMessageDialog(null, "Ingrese una matrícula existente.");
+	    		}
+			break;
 			case "Mostrar":
+			break;
+			case "Borrar":
+			    vista.borrar();
 				break;
 
-			case "Borrar":
-			Vista.borrar();
-				break;
 			case "Salir":
-				Vista.salir();
+				vista.salir();
 				break;
+
 			default:
 				JOptionPane.showMessageDialog(null,  "Evento no identificado.");
 		}
 
 	}
+
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void mousePressed(java.awt.event.MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void mouseReleased(java.awt.event.MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void mouseEntered(java.awt.event.MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void mouseExited(java.awt.event.MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

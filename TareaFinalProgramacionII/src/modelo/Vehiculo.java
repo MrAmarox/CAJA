@@ -58,7 +58,7 @@ public void setMat(String mat) {
     this.mat = mat;
 }
 
-public void setMar(String marca) {
+public void setMarca(String marca) {
     this.marca = marca;
 }
 
@@ -66,7 +66,7 @@ public void setMod(String mod) {
     this.mod = mod;
 }
 
-public void setMaletero(String malet) {
+public void setMalet(String malet) {
     this.malet = malet;
 }
 
