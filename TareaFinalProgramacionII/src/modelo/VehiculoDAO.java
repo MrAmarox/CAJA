@@ -115,6 +115,8 @@ public class VehiculoDAO {
 			
         }
     }
+
+    public ArrayList>Vehiculo
     public void getVehiculo(String mat){
         String sql="SELECT * FROM vehiculo WHERE matricula="+mat;
         try{
