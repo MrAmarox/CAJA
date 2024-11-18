@@ -1,5 +1,5 @@
 package Vista;
-
+import modelo.Vehiculo;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -158,6 +158,21 @@ public class Vista extends JFrame {
 		JButton btnsalir = new JButton("Salir");
 		btnsalir.setBounds(300, 430, 120, 35);
 		contentPane.add(btnsalir);
+	}
+
+	public Vehiculo getVehiculo(){
+		if(!(txtmat.equals("")&&txtmarca.equals("")&&txtmod.equals("")&&txtmalet.equals("")&&txtpuer.equals("")&&txtyear.equals(""))){}
+			Vehiculo vehiculo= new Vehiculo(
+				txtmat.getText(),
+				txtmarca.getText(),
+				txtmod.getText(),
+				txtmalet.getText(),
+				Integer.parseInt(txtpuer.getText()),
+				Integer. parseInt(txtyear.getText())
+				);
+				);
+		}
+		return vehiculo;
 	}
     
     public String getMat(){
