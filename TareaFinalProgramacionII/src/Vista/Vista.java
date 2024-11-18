@@ -161,16 +161,19 @@ public class Vista extends JFrame {
 	}
 
 	public Vehiculo getVehiculo(){
-		if(!(txtmat.equals("")&&txtmarca.equals("")&&txtmod.equals("")&&txtmalet.equals("")&&txtpuer.equals("")&&txtyear.equals(""))){}
-			Vehiculo vehiculo= new Vehiculo(
-				txtmat.getText(),
-				txtmarca.getText(),
-				txtmod.getText(),
-				txtmalet.getText(),
-				Integer.parseInt(txtpuer.getText()),
-				Integer. parseInt(txtyear.getText())
-				);
-				);
+		Vehiculo vehiculo= new Vehiculo();
+		if(!(txtmat.equals("")&&txtmarca.equals("")&&txtmod.equals("")&&txtmalet.equals("")&&txtpuer.equals("")&&txtyear.equals("")&&txtplaz.equals(""))){
+				vehiculo.setMat(txtmat.getText());
+				vehiculo.setMarca(txtmarca.getText());
+				vehiculo.setMod(txtmod.getText());
+				vehiculo.setMalet(txtmalet.getText());
+				vehiculo.setPuer(Integer.parseInt(txtpuer.getText()));
+				vehiculo.setPlaz(Integer.parseInt(txtplaz.getText()));
+				vehiculo.setYear(Integer.parseInt(txtyear.getText()));
+				return vehiculo;
+		}else{
+			JOptionPane.showMessageDialog(null,"Hay datos sin completar");
+            txtmat.requestFocus();
 		}
 		return vehiculo;
 	}
