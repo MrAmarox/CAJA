@@ -52,6 +52,7 @@ public class Controladora implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String objeto= e.getActionCommand();
+		vista.borrar();
 		switch(objeto) {
 			case "Ingresar":
 			    if (!(vista.getMat().equals(""))) {

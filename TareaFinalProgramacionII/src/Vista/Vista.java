@@ -160,6 +160,7 @@ public class Vista extends JFrame {
 		contentPane.add(btnmostrar);
 		
 		btnclear = new JButton("Borrar");
+		btnclear.addActionListener(controladora);
 		btnclear.setBounds(160, 430, 120, 35);
 		contentPane.add(btnclear);
 		
