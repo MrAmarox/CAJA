@@ -22,15 +22,23 @@ public class VehiculoDAO {
     public VehiculoDAO(){
 
     }
-    public ArrayList getVehiculos(){
-        ArrayList vehiculos= new ArrayList<>();
-        String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año";
+    public ArrayList<Vehiculo> getVehiculos(){
+        ArrayList<Vehiculo> vehiculos= new ArrayList<>();
+        String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año FROM vehiculo";
         try {
             con= conbd.getConnection();
             stmt= con.createStatement();
             rs= stmt.executeQuery(sql);
             while(rs.next()){
-                vehiculo=new Vehiculo(rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"), rs.getString("maletero"), rs.getInt("puertas"), rs.getInt("plazas"), rs.getInt("año"));
+                vehiculo=new Vehiculo(
+                    rs.getString("matricula"),
+                    rs.getString("marca"),
+                    rs.getString("modelo"),
+                    rs.getString("maletero"),
+                    rs.getInt("puertas"),
+                    rs.getInt("plazas"),
+                    rs.getInt("año")
+                );
                 vehiculos.add(vehiculo);
             }
 
@@ -73,7 +81,7 @@ public class VehiculoDAO {
         }
     }
     public void agregarVehiculo(Vehiculo vehiculo){
-        String sql="INSERT INTO vehiculo VALVES(?,?,?,?,?,?,?)";
+        String sql="INSERT INTO vehiculo (matricula, marca, modelo, puertas, plazas, maletero, año) VALUES(?,?,?,?,?,?,?)";
         try {
 			con=conbd.getConnection();
 			pstmt=con.prepareStatement(sql);

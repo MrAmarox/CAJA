@@ -28,11 +28,14 @@ public class Controladora implements ActionListener, MouseListener {
 			    	if (vehiculoDAO.Consulta(vista.getMat())) {
 			    		JOptionPane.showMessageDialog(null, "Matrícula existente.");
                    }else{
+						vehiculo = vista.getVehiculo();
                        vehiculoDAO.agregarVehiculo(vista.getVehiculo());
                        vista.borrar();
                 		vista.cargarTabla(vehiculoDAO.getVehiculos());
 		    	    }
-		    	}
+		    	}else{
+					JOptionPane.showMessageDialog(null, "No hay matrícula ingresada");
+				}
 				break;
 			case "Modificar":
                 if (!(vista.getMat().equals(""))) {
@@ -44,6 +47,11 @@ public class Controladora implements ActionListener, MouseListener {
                 }
 				break;
 			case "Eliminar":
+				if(!(vista.getmatTabla().equals(""))){
+					vehiculoDAO.delVehiculo(vista.getmatTabla());
+					vista.cargarTabla(vehiculoDAO.getVehiculos());
+					vista.borrar();
+				}
 				break;
 			case "Buscar":
 			    if (vehiculoDAO.Consulta(vista.getMat())){
@@ -54,17 +62,19 @@ public class Controladora implements ActionListener, MouseListener {
 	    		}
 			break;
 			case "Mostrar":
+				vista.cargarTabla(vehiculoDAO.getVehiculos());
+				vista.Mostrar();
 			break;
 			case "Borrar":
 			    vista.borrar();
 				break;
-
 			case "Salir":
 				vista.salir();
 				break;
 
 			default:
 				JOptionPane.showMessageDialog(null,  "Evento no identificado.");
+				break;
 		}
 
 	}

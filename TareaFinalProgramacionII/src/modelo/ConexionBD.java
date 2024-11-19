@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 class ConexionBD{
 	private Connection conexion;
-	private String bd="Clases";
+	private String bd="alquileres";
 	private String user="root";
 	private String pswrd="root";
 	private String url="jdbc:mariadb://localhost/"+ bd;

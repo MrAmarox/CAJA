@@ -239,7 +239,7 @@ public final class Vista extends JFrame {
 		txtyear.setText(String.valueOf(vehiculo.getYear()));
 	}
 
-		public void cargarTabla(@SuppressWarnings("rawtypes") ArrayList vehiculos){
+		public void cargarTabla (ArrayList vehiculos){
 			if(vehiculos.isEmpty()){
 				btnmod.setEnabled(false);
 			}
