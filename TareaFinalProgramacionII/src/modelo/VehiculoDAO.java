@@ -13,7 +13,7 @@ public class VehiculoDAO {
 	private PreparedStatement pstmt= null;
 	private ResultSet rs= null;
 	private Connection con= null;
-	private ConexionBD conbd= null;
+	private ConexionBD conbd;
     private Vehiculo vehiculo;
 
     public VehiculoDAO(ConexionBD conbd){
