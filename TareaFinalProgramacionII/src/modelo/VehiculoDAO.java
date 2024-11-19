@@ -49,13 +49,13 @@ public class VehiculoDAO {
         }catch(ClassNotFoundException cnfe) {
             JOptionPane.showMessageDialog(null, "Error al cargar los Drivers.");
         }catch(SQLException sqle){
-            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
+            JOptionPane.showMessageDialog(null, "Error al obtener los datos");
         }
         return vehiculos;
     }
 
     public void modVehiculo(Vehiculo vehiculo){
-        String sql="UPDATE Vehiculo SET marca=?, modelo=?, puertas=?, plazas=?, maletero=?, año=? where matricula=? ;";
+        String sql="UPDATE Vehiculo SET marca=?, modelo=?, puertas=?, plazas=?, maletero=?, año=? where matricula=?;";
         try{
             con=conbd.getConnection();
             pstmt=con.prepareStatement(sql);
@@ -74,10 +74,10 @@ public class VehiculoDAO {
             con.close();
         }catch(ClassNotFoundException cnfe){
             JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-
+            cnfe.printStackTrace();
 		}catch(SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-
+			JOptionPane.showMessageDialog(null, "Error al modificar los datos");
+            sqle.printStackTrace();
         }
     }
     public void agregarVehiculo(Vehiculo vehiculo){
@@ -100,15 +100,15 @@ public class VehiculoDAO {
 			con.close();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-
+            cnfe.printStackTrace();
 		}catch(SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-
+			JOptionPane.showMessageDialog(null, "Error al insertar datos");
+            sqle.printStackTrace();
 		}
     }
     public boolean Consulta(String matr){
         boolean existe=false;
-        String sql="Select * FROM vehiculo WHERE matricula="+matr+" ;";
+        String sql="Select * FROM vehiculo WHERE matricula="+matr+";";
         try{
             con=conbd.getConnection();
             stmt=con.createStatement();
@@ -119,39 +119,41 @@ public class VehiculoDAO {
                     existe=true;
                 }
             }
-        }catch(ClassNotFoundException cnfe) {
-			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-
-		}catch(SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos");
-
+            rs.close();
+            stmt.close();
+            con.close();
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al consultar la matrícula");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
 		}
 		return existe;
     }
-    public void delVehiculo(String matr){
-        String sql="DELETE FROM vehiculos WHERE matricula="+matr+" ;";
+    public boolean delVehiculo(String matr){
+        boolean done = false;
         try{
             con= conbd.getConnection();
-			stmt= con.createStatement();
-			int res= stmt.executeUpdate(sql);
-			if(res !=0) {
-				JOptionPane.showMessageDialog(null, "Vehículo removido con éxito.");
-			}
+            stmt= con.createStatement();
+            stmt.execute("DELETE FROM vehiculo WHERE matricula="+matr+";");
+			JOptionPane.showMessageDialog(null, "Vehículo removido con éxito.");
 			stmt.close();
 			con.close();
+        }catch(SQLException sqle) {
+			JOptionPane.showMessageDialog(null, "Error al eliminar el vehiculo");
+            System.err.println(sqle.getMessage());
+            sqle.printStackTrace();
 		}catch(ClassNotFoundException cnfe) {
 			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-
-		}catch(SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
+            System.err.println(cnfe.getMessage());
+            cnfe.printStackTrace();
         }
+        return done;
     }
     public Vehiculo getVehiculo(String mat){
-        String sql="SELECT * FROM vehiculo WHERE matricula="+mat+" ;";
         try{
             con= conbd.getConnection();
 			stmt= con.createStatement();
-			rs= stmt.executeQuery(sql);
+			rs= stmt.executeQuery("SELECT * FROM vehiculo where matricula="+mat+";");
             if(rs.next()){
                 vehiculo= new Vehiculo(
                     rs.getString(1),
@@ -162,20 +164,14 @@ public class VehiculoDAO {
                     rs.getInt(5),
                     rs.getInt(7)
                 );
-                return vehiculo;
             }
             stmt.close();
 			con.close();
-		}catch(ClassNotFoundException cnfe) {
-			JOptionPane.showMessageDialog(null, "Error al cargar Drivers");
-
-		}catch(SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-			
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Error al obtener los datos");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
         }
         return vehiculo;
-    }
-    public void pene(){
-        System.out.println("merca");
     }
 }

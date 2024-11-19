@@ -30,7 +30,7 @@ public final class Vista extends JFrame {
 	private DefaultTableModel model;
 	private JButton btnagregar, btndel, btnbuscar, btnmod, btnmostrar, btnclear, btnsalir;
 	private JScrollPane scrollPane;
-	private JPanel contentpane;
+	@SuppressWarnings("unused")
 	private Vehiculo vehiculo;
 	private static VehiculoDAO vehiculoDAO;
 	private Controladora controladora;
@@ -39,7 +39,6 @@ public final class Vista extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-                        @Override
 			public void run() {
 				try {
 					vehiculoDAO= new VehiculoDAO();
@@ -195,7 +194,7 @@ public final class Vista extends JFrame {
 
 	public Vehiculo getVehiculo(){
 		Vehiculo vehiculo= new Vehiculo();
-		if(!(txtmat.equals("")&&txtmarca.equals("")&&txtmod.equals("")&&txtmalet.equals("")&&txtpuer.equals("")&&txtyear.equals("")&&txtplaz.equals(""))){
+		if(!((txtmat.getText()).equals("")&&(txtmarca.getText()).equals("")&&(txtmod.getText()).equals("")&&(txtmalet.getText()).equals("")&&(txtpuer.getText()).equals("")&&(txtyear.getText()).equals("")&&(txtplaz.getText()).equals(""))){
 				vehiculo.setMat(txtmat.getText());
 				vehiculo.setMarca(txtmarca.getText());
 				vehiculo.setMod(txtmod.getText());
@@ -242,19 +241,19 @@ public final class Vista extends JFrame {
 	}
 
 		public void cargarTabla (ArrayList<Vehiculo> vehiculos){
-			if(vehiculos.isEmpty()){
+			if(vehiculos.size() == 0){
 				btnmod.setEnabled(false);
 			}
 			model.setRowCount(0);
 			for(int i = 0; i < vehiculos.size(); i++){
 				Object[] fila = {
-					((Vehiculo) vehiculos.get(i)).getMat(),
-					((Vehiculo) vehiculos.get(i)).getMarca(),
-					((Vehiculo) vehiculos.get(i)).getMod(),
-					((Vehiculo) vehiculos.get(i)).getMalet(),
-					((Vehiculo) vehiculos.get(i)).getPlaz(),
-					((Vehiculo) vehiculos.get(i)).getPuer(),
-					((Vehiculo) vehiculos.get(i)).getYear()
+					vehiculos.get(i).getMat(),
+					vehiculos.get(i).getMarca(),
+					vehiculos.get(i).getMod(),
+					vehiculos.get(i).getMalet(),
+					vehiculos.get(i).getPlaz(),
+					vehiculos.get(i).getPuer(),
+					vehiculos.get(i).getYear()
 				};
 			model.addRow(fila);
 			}
