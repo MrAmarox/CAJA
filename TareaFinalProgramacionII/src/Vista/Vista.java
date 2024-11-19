@@ -218,6 +218,15 @@ public final class Vista extends JFrame {
 		}
 		return mat;
 	}
+	private void addControlador(Controladora controladora){
+		this.btnclear.addActionListener(controladora);
+		this.btnbuscar.addActionListener(controladora);
+		this.btnmod.addActionListener(controladora);
+		this.btndel.addActionListener(controladora);
+		this.btnagregar.addActionListener(controladora);
+		this.btnmostrar.addActionListener(controladora);
+		this.btnsalir.addActionListener(controladora);
+	}
 
 
 	public void cargar(Vehiculo vehiculo){
