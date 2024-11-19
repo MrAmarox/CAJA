@@ -1,6 +1,6 @@
 package Vista;
 import modelo.Vehiculo;
-import modelo.VehiculoDAO;
+import controladora.Controladora;
 import java.awt.EventQueue;
 import java.awt.ScrollPane;
 import java.util.ArrayList;
@@ -14,9 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import controladora.Controladora;
-
 import javax.swing.JScrollPane;
 
 public class Vista extends JFrame {
@@ -32,7 +29,7 @@ public class Vista extends JFrame {
 	private JTextField txtyear;
 	private JTable table;
 	private DefaultTableModel model;
-	private JButton btnagregar, btndel, btnbuscar, btnmodificar, btnmostrar, btnborrar, btnsalir;
+	private JButton btnagregar, btndel, btnbuscar, btnmod, btnmostrar, btnclear, btnsalir;
 	private JScrollPane scrollpane;
 	private JPanel contentpane;
 	private Vehiculo vehiculo;
@@ -141,9 +138,9 @@ public class Vista extends JFrame {
 		btnbuscar.setBounds(296, 100, 120, 35);
 		contentPane.add(btnbuscar);
 		
-		btnmodificar = new JButton("Modificar");
-		btnmodificar.setBounds(296, 145, 120, 35);
-		contentPane.add(btnmodificar);
+		btnmod = new JButton("Modificar");
+		btnmod.setBounds(296, 145, 120, 35);
+		contentPane.add(btnmod);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 190, 414, 191);
@@ -164,9 +161,9 @@ public class Vista extends JFrame {
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
 		
-		btndel = new JButton("Borrar");
-		btndel.setBounds(160, 430, 120, 35);
-		contentPane.add(btndel);
+		btnclear = new JButton("Borrar");
+		btnclear.setBounds(160, 430, 120, 35);
+		contentPane.add(btnclear);
 		
 		btnsalir = new JButton("Salir");
 		btnsalir.addActionListener(controladora);
@@ -211,20 +208,20 @@ public class Vista extends JFrame {
 		txtyear.setText(String.valueOf(vehiculo.getYear()));
 	}
 
-		public void cargarTabla(ArrayList vehiculos){
-			if(vehiculos.size() == 0){
-				btnmodificar.setEnabled(false);
+		public void cargarTabla(@SuppressWarnings("rawtypes") ArrayList vehiculos){
+			if(vehiculos.isEmpty()){
+				btnmod.setEnabled(false);
 			}
 			model.setRowCount(0);
 			for(int i = 0; i < vehiculos.size(); i++){
-					Object[] fila = {
-					vehiculos.get(i).getMat(),
-					vehiculos.get(i).getMarca(),
-					vehiculos.get(i).getMod(),
-					vehiculos.get(i).getMalet(),
-					vehiculos.get(i).getPlaz(),
-					vehiculos.get(i).getPuer(),
-					vehiculos.get(i).getYear()
+				Object[] fila = {
+					((Vehiculo) vehiculos.get(i)).getMat(),
+					((Vehiculo) vehiculos.get(i)).getMarca(),
+					((Vehiculo) vehiculos.get(i)).getMod(),
+					((Vehiculo) vehiculos.get(i)).getMalet(),
+					((Vehiculo) vehiculos.get(i)).getPlaz(),
+					((Vehiculo) vehiculos.get(i)).getPuer(),
+					((Vehiculo) vehiculos.get(i)).getYear()
 				};
 			model.addRow(fila);
 			}
@@ -242,42 +239,40 @@ public class Vista extends JFrame {
 		public void salir(){
 			System.exit(0);
 		}
-		
 		public void inicio(){
 			btnagregar.setEnabled(true);
-			btnmodificar.setEnabled(false);
+			btnmod.setEnabled(false);
 			btndel.setEnabled(true);
 			btnmostrar.setEnabled(true);
 			btnbuscar.setEnabled(true);
-			btnborrar.setEnabled(true);
+			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}
 		public void Buscar(){
 			btnagregar.setEnabled(false);
-			btnmodificar.setEnabled(true);
+			btnmod.setEnabled(true);
 			btndel.setEnabled(true);
 			btnmostrar.setEnabled(true);
 			btnbuscar.setEnabled(true);
-			btnborrar.setEnabled(true);
+			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}
 		public void modificarEliminar(){
 			btnagregar.setEnabled(false);
-			btnmodificar.setEnabled(true);
+			btnmod.setEnabled(true);
 			btndel.setEnabled(true);
 			btnmostrar.setEnabled(true);
 			btnbuscar.setEnabled(false);
-			btnborrar.setEnabled(true);
+			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}
 		public void Mostrar(){
 			btnagregar.setEnabled(true);
-			btnmodificar.setEnabled(false);
+			btnmod.setEnabled(false);
 			btndel.setEnabled(false);
 			btnmostrar.setEnabled(true);
 			btnbuscar.setEnabled(false);
-			btnborrar.setEnabled(true);
+			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}
-
 }
