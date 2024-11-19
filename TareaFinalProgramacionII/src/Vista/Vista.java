@@ -32,7 +32,7 @@ public class Vista extends JFrame {
 	private JScrollPane scrollpane;
 	private JPanel contentpane;
 	private Vehiculo vehiculo;
-	private VehiculoDAO vehiculoDAO;
+	private static VehiculoDAO vehiculoDAO;
 	private Controladora controladora;
 	/**
 	 * Launch the application.
@@ -41,7 +41,7 @@ public class Vista extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Vista frame = new Vista();
+					Vista frame = new Vista(vehiculoDAO);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,13 +58,13 @@ public class Vista extends JFrame {
 		inicio();
 	}
 
-	/* public Vista(VehiculoDAO vehiculoDAO) {
+	 public Vista(VehiculoDAO vehiculoDAO) {
 		this.vehiculoDAO = vehiculoDAO;
-		controladora = new Controladora(this,vehiculoDAO);
+		controladora = new Controladora(this, vehiculoDAO);
 		initComponents();
 		this.addControlador(controladora);
 		inicio();
-	} */
+	}
 
 	private void initComponents(){
 		setTitle("Alquileres");
