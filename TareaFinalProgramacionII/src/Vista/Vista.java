@@ -58,7 +58,7 @@ public final class Vista extends JFrame {
 		inicio();
 	}
 
-	 public Vista(VehiculoDAO vehiculoDAO) {
+	public Vista(VehiculoDAO vehiculoDAO) {
 		Vista.vehiculoDAO = vehiculoDAO;
 		controladora = new Controladora(this, vehiculoDAO);
 		initComponents();
