@@ -65,6 +65,13 @@ public class Controladora implements ActionListener, MouseListener {
 		    	}
 				break;
 			case "Modificar":
+                if (!(vista.getMat().equals(""))) {
+                   if (vehiculoDAO.Consulta(vista.getMat())) {
+                    vehiculoDAO.modVehiculo(vista.getVehiculo());
+                    vista.borrar();
+                    vista.cargarTabla(vehiculoDAO.getVehiculos());
+                    }
+                }
 				break;
 			case "Eliminar":
 				break;
