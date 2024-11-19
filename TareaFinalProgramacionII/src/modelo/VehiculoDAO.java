@@ -22,6 +22,29 @@ public class VehiculoDAO {
     public VehiculoDAO(){
 
     }
+    public ArrayList getVehiculos(){
+        ArrayList vehiculos= new ArrayList<>();
+        String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año";
+        try {
+            con= conbd.getConnection();
+            stmt= con.createStatement();
+            rs= stmt.executeQuery(sql);
+            while(rs.next()){
+                vehiculo=new Vehiculo(rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"), rs.getString("maletero"), rs.getInt("puertas"), rs.getInt("plazas"), rs.getInt("año"));
+                vehiculos.add(vehiculo);
+            }
+
+            rs.close();
+            stmt.close();
+            con.close();
+
+        }catch(ClassNotFoundException cnfe) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los Drivers.");
+        }catch(SQLException sqle){
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
+        }
+        return vehiculos;
+    }
 
     public void modVehiculo(Vehiculo vehiculo){
         String sql="UPDATE Vehiculo SET marca=?, modelo=?, puertas=?, plazas=?, maletero=?, año=? where matricula=?";
@@ -114,30 +137,6 @@ public class VehiculoDAO {
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
         }
-    }
-
-    public ArrayList getVehiculos(){
-        ArrayList vehiculos= new ArrayList<>();
-        String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año";
-        try {
-            con= conbd.getConnection();
-            stmt= con.createStatement();
-            rs= stmt.executeQuery(sql);
-            while(rs.next()){
-                vehiculo=new Vehiculo(rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"), rs.getString("maletero"), rs.getInt("puertas"), rs.getInt("plazas"), rs.getInt("año"));
-                vehiculos.add(vehiculo);
-            }
-
-            rs.close();
-            stmt.close();
-            con.close();
-            
-        }catch(ClassNotFoundException cnfe) {
-            JOptionPane.showMessageDialog(null, "Error al cargar los Drivers.");
-        }catch(SQLException sqle){
-            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos.");
-        }
-        return vehiculos;
     }
     public Vehiculo getVehiculo(String mat){
         String sql="SELECT * FROM vehiculo WHERE matricula="+mat;
