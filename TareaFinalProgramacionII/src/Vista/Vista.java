@@ -15,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
-public class Vista extends JFrame {
+public final class Vista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -32,18 +32,19 @@ public class Vista extends JFrame {
 	private JScrollPane scrollPane;
 	private JPanel contentpane;
 	private Vehiculo vehiculo;
-	private VehiculoDAO vehiculoDAO;
-	private Controladora controladora;
-	private static Vista frame;
-		/**
-		 * Launch the application.
-		 */
-		public static void main(String[] args) {
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						frame = new Vista();
-					frame.setVisible(true);
+	private static VehiculoDAO vehiculoDAO;
+		private static Controladora controladora;
+			private static Vista frame;
+				/**
+				 * Launch the application.
+				 */
+				public static void main(String[] args) {
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								frame = new Vista();
+							frame.setVisible(true);
+							controladora = new Controladora( frame, vehiculoDAO);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,7 +69,7 @@ public class Vista extends JFrame {
 	} */
 
 	private void initComponents(){
-		controladora = new Controladora( frame, vehiculoDAO);
+		
 		setTitle("Alquileres");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 530);

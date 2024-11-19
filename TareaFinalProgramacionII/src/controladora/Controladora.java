@@ -19,6 +19,7 @@ public class Controladora implements ActionListener, MouseListener {
 		this.vista= vista;
 		this.vehiculoDAO= vehiculoDAO;
 	}
+
 	public void actionPerformed(ActionEvent e) {
 		String objeto= e.getActionCommand();
 		switch(objeto) {
