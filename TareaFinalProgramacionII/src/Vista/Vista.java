@@ -59,7 +59,7 @@ public final class Vista extends JFrame {
 	}
 
 	 public Vista(VehiculoDAO vehiculoDAO) {
-		this.vehiculoDAO = vehiculoDAO;
+		Vista.vehiculoDAO = vehiculoDAO;
 		controladora = new Controladora(this, vehiculoDAO);
 		initComponents();
 		this.addControlador(controladora);
@@ -287,6 +287,7 @@ public final class Vista extends JFrame {
 		txtmat.setText("");
 		txtmod.setText("");
 		txtpuer.setText("");
+		txtmarca.setText("");
 		txtplaz.setText("");
 		txtmalet.setText("");
 		txtyear.setText("");
