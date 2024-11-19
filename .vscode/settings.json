@@ -2,6 +2,7 @@
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "mariadb-java-client-3.5.0.jar"
+        "mariadb-java-client-3.5.0.jar",
+        "a:\\mariadb-java-client-3.5.0.jar"
     ]
 }

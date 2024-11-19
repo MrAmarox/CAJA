@@ -164,9 +164,6 @@ public final class Vista extends JFrame {
 		scrollPane.setBounds(10, 190, 414, 191);
 		contentPane.add(scrollPane);
 
-		table = new JTable();
-		table.addMouseListener(controladora);
-		scrollPane.setViewportView(table);
 		model = new DefaultTableModel();
 		model.addColumn("Matricula");
 		model.addColumn("Marca");
@@ -175,6 +172,9 @@ public final class Vista extends JFrame {
 		model.addColumn("Puertas");
 		model.addColumn("Plazas");
 		model.addColumn("Año");
+		table = new JTable(model);
+		table.addMouseListener(controladora);
+		scrollPane.setViewportView(table);
 
 		btnmostrar = new JButton("Mostrar");
 		btnmostrar.addActionListener(controladora);
