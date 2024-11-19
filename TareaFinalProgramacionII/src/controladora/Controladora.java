@@ -11,7 +11,7 @@ public class Controladora implements ActionListener, MouseListener {
 
     private static Vista vista;
 	private static VehiculoDAO vehiculoDAO;
-	private Vehiculo vehiculo;
+	private Vehiculo vehiculo=null;
 	
 	public Controladora(Vista vista, VehiculoDAO vehiculoDAO) {
 		Controladora.vista= vista;

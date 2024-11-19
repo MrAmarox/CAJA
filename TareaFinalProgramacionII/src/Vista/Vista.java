@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Vehiculo;
 import modelo.VehiculoDAO;
 
-public class Vista extends JFrame {
+public final class Vista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
