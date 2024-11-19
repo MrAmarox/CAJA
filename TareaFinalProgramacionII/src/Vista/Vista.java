@@ -49,7 +49,7 @@ public final class Vista extends JFrame {
 			}
 		});
 	}
-
+//aaaaa fuck u
 	/**
 	 * Create the frame.
 	 */
