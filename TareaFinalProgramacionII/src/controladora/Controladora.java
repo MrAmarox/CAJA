@@ -104,7 +104,7 @@ public class Controladora implements ActionListener, MouseListener {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 	
-	/*@Override
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
@@ -130,5 +130,5 @@ public class Controladora implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-	}*/
+	}
 }
