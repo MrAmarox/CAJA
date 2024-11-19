@@ -19,11 +19,11 @@ public class Controladora implements ActionListener, MouseListener {
 		this.vista= vista;
 		this.vehiculoDAO= vehiculoDAO;
 	}
+
 	public void actionPerformed(ActionEvent e) {
 		String objeto= e.getActionCommand();
-		vista.borrar();
 		switch(objeto) {
-			case "Ingresar":
+			case "Agregar":
 			    if (!(vista.getMat().equals(""))) {
 			    	if (vehiculoDAO.Consulta(vista.getMat())) {
 			    		JOptionPane.showMessageDialog(null, "Matrícula existente.");
