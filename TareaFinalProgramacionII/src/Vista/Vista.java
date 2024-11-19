@@ -201,6 +201,16 @@ public class Vista extends JFrame {
 		}
 		return mat;
 	}
+	private void addControlador(Controladora controladora){
+		this.btnborrar.addActionListener(controladora);
+		this.btnbuscar.addActionListener(controladora);
+		this.btnmodificar.addActionListener(controladora);
+		this.btndel.addActionListener(controladora);
+		this.btnagregar.addActionListener(controladora);
+		this.btnmostrar.addActionListener(controladora);
+		this.btnsalir.addActionListener(controladora);
+	}
+
 	public void cargar(Vehiculo vehiculo){
 		txtmat.setText(vehiculo.getMat());
 		txtmarca.setText(vehiculo.getMarca());
@@ -229,6 +239,31 @@ public class Vista extends JFrame {
 			model.addRow(fila);
 			}
 		}
+		public String getmatTabla(){
+			String mat = "";
+			if(table.getSelectedRow()!=-1){
+				mat = (String)model.getValueAt(table.getSelectedRow(), 0);
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "No hay datos seleccionados");
+			}
+			return mat;
+		}
+		public void senddatTabla(){
+			if(table.getSelectedRow()!=-1){
+				txtmat.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 0))));
+				txtmarca.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 1))));
+				txtmod.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 2))));
+				txtmalet.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 3))));
+				txtplaz.setText(String.valueOf(((int)model.getValueAt(table.getSelectedRow(), 4))));
+				txtpuer.setText(String.valueOf(((int)model.getValueAt(table.getSelectedRow(), 5))));
+				txtyear.setText(String.valueOf(((int)model.getValueAt(table.getSelectedRow(), 6))));
+				this.modificarEliminar();
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "No hay datos seleccionados");
+			}
+		}
 
 	public void borrar(){
 		txtmat.setText("");
@@ -242,7 +277,7 @@ public class Vista extends JFrame {
 		public void salir(){
 			System.exit(0);
 		}
-		
+
 		public void inicio(){
 			btnagregar.setEnabled(true);
 			btnmodificar.setEnabled(false);
