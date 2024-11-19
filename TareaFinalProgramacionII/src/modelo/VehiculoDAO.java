@@ -24,7 +24,7 @@ public class VehiculoDAO {
     }
     public ArrayList<Vehiculo> getVehiculos(){
         ArrayList<Vehiculo> vehiculos= new ArrayList<>();
-        String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año FROM vehiculo";
+        String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año FROM vehiculo;";
         try {
             con= conbd.getConnection();
             stmt= con.createStatement();
@@ -55,7 +55,7 @@ public class VehiculoDAO {
     }
 
     public void modVehiculo(Vehiculo vehiculo){
-        String sql="UPDATE Vehiculo SET marca=?, modelo=?, puertas=?, plazas=?, maletero=?, año=? where matricula=?";
+        String sql="UPDATE Vehiculo SET marca=?, modelo=?, puertas=?, plazas=?, maletero=?, año=? where matricula=? ;";
         try{
             con=conbd.getConnection();
             pstmt=con.prepareStatement(sql);
@@ -81,7 +81,7 @@ public class VehiculoDAO {
         }
     }
     public void agregarVehiculo(Vehiculo vehiculo){
-        String sql="INSERT INTO vehiculo (matricula, marca, modelo, puertas, plazas, maletero, año) VALUES(?,?,?,?,?,?,?)";
+        String sql="INSERT INTO vehiculo (matricula, marca, modelo, puertas, plazas, maletero, año) VALUES(?,?,?,?,?,?,?);";
         try {
 			con=conbd.getConnection();
 			pstmt=con.prepareStatement(sql);
@@ -108,7 +108,7 @@ public class VehiculoDAO {
     }
     public boolean Consulta(String matr){
         boolean existe=false;
-        String sql="Select * FROM vehiculo WHERE matricula="+matr;
+        String sql="Select * FROM vehiculo WHERE matricula="+matr+" ;";
         try{
             con=conbd.getConnection();
             stmt=con.createStatement();
@@ -129,7 +129,7 @@ public class VehiculoDAO {
 		return existe;
     }
     public void delVehiculo(String matr){
-        String sql="DELETE FROM vehiculos WHERE matricula="+matr;
+        String sql="DELETE FROM vehiculos WHERE matricula="+matr+" ;";
         try{
             con= conbd.getConnection();
 			stmt= con.createStatement();
@@ -147,7 +147,7 @@ public class VehiculoDAO {
         }
     }
     public Vehiculo getVehiculo(String mat){
-        String sql="SELECT * FROM vehiculo WHERE matricula="+mat;
+        String sql="SELECT * FROM vehiculo WHERE matricula="+mat+" ;";
         try{
             con= conbd.getConnection();
 			stmt= con.createStatement();
