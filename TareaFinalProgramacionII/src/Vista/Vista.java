@@ -1,19 +1,19 @@
 package Vista;
-import modelo.Vehiculo;
-import modelo.VehiculoDAO;
 import controladora.Controladora;
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import modelo.Vehiculo;
+import modelo.VehiculoDAO;
 
 public final class Vista extends JFrame {
 
@@ -39,6 +39,7 @@ public final class Vista extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+                        @Override
 			public void run() {
 				try {
 					Vista frame = new Vista(vehiculoDAO);

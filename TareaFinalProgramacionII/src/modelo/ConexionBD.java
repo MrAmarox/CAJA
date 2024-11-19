@@ -12,7 +12,7 @@ class ConexionBD{
 	private String url="jdbc:mariadb://localhost/"+ bd;
 	private ConexionBD instance=null;
 
-	private ConexionBD() {
+	public ConexionBD() {
 	}
 	public ConexionBD getInstance() {
 		if(instance==null) {
