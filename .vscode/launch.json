@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Vista",
+            "request": "launch",
+            "mainClass": "Vista.Vista",
+            "projectName": "CAJA_5b723fb3"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
