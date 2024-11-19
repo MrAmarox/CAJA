@@ -2,9 +2,7 @@ package Vista;
 import modelo.Vehiculo;
 import controladora.Controladora;
 import java.awt.EventQueue;
-import java.awt.ScrollPane;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
