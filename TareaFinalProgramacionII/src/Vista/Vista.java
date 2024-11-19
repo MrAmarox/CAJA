@@ -1,6 +1,7 @@
 package Vista;
 import modelo.Vehiculo;
 import java.awt.EventQueue;
+import java.awt.ScrollPane;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -26,7 +27,11 @@ public class Vista extends JFrame {
 	private JTextField txtplaz;
 	private JTextField txtyear;
 	private JTable table;
-	private JButton btnagregar, btndel, btnmod, btnbuscar, btnclear, btnsalir, btnmostrar;
+	private DefaultTableModel model;
+	private JButton btnagregar, btndel, btnbuscar, btnmodificar, btnmostrar, btnborrar, btnsalir;
+	private JScrollPane scrollpane;
+	private JPanel contentpane;
+	private Vehiculo vehiculo;
 	/**
 	 * Launch the application.
 	 */
@@ -127,9 +132,9 @@ public class Vista extends JFrame {
 		btndel.setBounds(296, 55, 120, 35);
 		contentPane.add(btndel);
 		
-		btnmod = new JButton("Buscar");
-		btnmod.setBounds(296, 100, 120, 35);
-		contentPane.add(btnmod);
+		JButton btnbuscar = new JButton("Buscar");
+		btnbuscar.setBounds(296, 100, 120, 35);
+		contentPane.add(btnbuscar);
 		
 		btnmod = new JButton("Modificar");
 		btnmod.setBounds(296, 145, 120, 35);
@@ -141,15 +146,16 @@ public class Vista extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Matricula", "Marca", "Modelo", "Maletero", "Puertas", "Plazas", "A\u00F1o"
-			}
-		));
-		
-		btnmostrar = new JButton("Mostrar");
+		model = new DefaultTableModel();
+		model.addColumn("Matricula");
+		model.addColumn("Marca");
+		model.addColumn("Modelo");
+		model.addColumn("Maletero");
+		model.addColumn("Puertas");
+		model.addColumn("Plazas");
+		model.addColumn("Año");
+
+		JButton btnmostrar = new JButton("Mostrar");
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
 		
@@ -199,24 +205,24 @@ public class Vista extends JFrame {
 		txtyear.setText(String.valueOf(vehiculo.getYear()));
 	}
 
-	public void cargarTabla(ArrayList vehiculos){
-		if(vehiculos.size() == 0){
-			btnmodificar.setEnabled(false);
+		public void cargarTabla(ArrayList vehiculos){
+			if(vehiculos.size() == 0){
+				btnmodificar.setEnabled(false);
+			}
+			model.setRowCount(0);
+			for(int i = 0; i < vehiculos.size(); i++){
+				Object[] fila = {
+					vehiculos.get(i).getMat(),
+					vehiculos.get(i).getMarca(),
+					vehiculos.get(i).getMod(),
+					vehiculos.get(i).getMalet(),
+					vehiculos.get(i).getPlaz(),
+					vehiculos.get(i).getPuer(),
+					vehiculos.get(i).getYear()
+				};
+			model.addRow(fila);
+			}
 		}
-		modelo.setRowCount(0);
-		for(int i = 0; i < vehiculos.size(); i++){
-			Vehiculo[] fila = {
-	    		vehiculos.get(i).getMat(),
-				vehiculos.get(i).getMarca(),
-				vehiculos.get(i).getMod(),
-				vehiculos.get(i).getMalet(),
-				vehiculos.get(i).getPlaz(),
-				vehiculos.get(i).getPuer(),
-				vehiculos.get(i).getYear()
-			};
-			modelo.addRow(fila);
-		}
-	}
 
 	public void borrar(){
 		txtmat.setText("");
@@ -227,7 +233,15 @@ public class Vista extends JFrame {
 		txtyear.setText("");
 	}
 
-	public void salir(){
-		System.exit(0);
-	}
+		public void salir(){
+			System.exit(0);
+		}
+		public void inicio(){
+			btnagregar.setEnabled(true);
+			btnmodificar.setEnabled(false);
+			btndel.setEnabled(true);
+			btnbuscar.setEnabled(true);
+			btnborrar.setEnabled(true);
+			btnsalir.setEnabled(true);
+		}
 }
