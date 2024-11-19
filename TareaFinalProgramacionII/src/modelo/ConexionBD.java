@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 class ConexionBD{
-	private Connection conexion;
+	private ConexionBD instance=null;
 	private String bd="alquileres";
 	private String user="root";
 	private String pswrd="root";
 	private String url="jdbc:mariadb://localhost/"+bd;
-	private ConexionBD instance=null;
+	private Connection conexion=null;
 
 	public ConexionBD() {
 	}
@@ -20,7 +20,7 @@ class ConexionBD{
 		}
 		return instance;
 	}
-	public Connection getConnection()throws ClassNotFoundException,SQLException{
+	Connection getConnection()throws ClassNotFoundException,SQLException{
 		Class.forName("org.mariadb.jdbc.Driver");
 		conexion=DriverManager.getConnection(url,user,pswrd);
 		return conexion;
