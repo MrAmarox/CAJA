@@ -298,7 +298,7 @@ public class Vista extends JFrame {
 			btnagregar.setEnabled(true);
 			btnmod.setEnabled(false);
 			btndel.setEnabled(true);
-			btnmostrar.setEnabled(true);
+			btnmostrar.setEnabled(false);
 			btnbuscar.setEnabled(true);
 			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
