@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Vehiculo;
 import modelo.VehiculoDAO;
 
-public final class Vista extends JFrame {
+public class Vista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -69,7 +69,6 @@ public final class Vista extends JFrame {
 	}
 
 	private void initComponents(){
-		
 		setTitle("Alquileres");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 530);
@@ -167,6 +166,7 @@ public final class Vista extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
+		table.addMouseListener(controladora);
 		scrollPane.setViewportView(table);
 		model = new DefaultTableModel();
 		model.addColumn("Matricula");
@@ -241,7 +241,7 @@ public final class Vista extends JFrame {
 		txtyear.setText(String.valueOf(vehiculo.getYear()));
 	}
 
-		public void cargarTabla (ArrayList vehiculos){
+		public void cargarTabla (ArrayList<Vehiculo> vehiculos){
 			if(vehiculos.isEmpty()){
 				btnmod.setEnabled(false);
 			}
@@ -274,9 +274,9 @@ public final class Vista extends JFrame {
 				txtmat.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 0))));
 				txtmarca.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 1))));
 				txtmod.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 2))));
-				txtmalet.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 3))));
+				txtmalet.setText(String.valueOf(((String)model.getValueAt(table.getSelectedRow(), 5))));
 				txtplaz.setText(String.valueOf(((int)model.getValueAt(table.getSelectedRow(), 4))));
-				txtpuer.setText(String.valueOf(((int)model.getValueAt(table.getSelectedRow(), 5))));
+				txtpuer.setText(String.valueOf(((int)model.getValueAt(table.getSelectedRow(), 3))));
 				txtyear.setText(String.valueOf(((int)model.getValueAt(table.getSelectedRow(), 6))));
 				this.modificarEliminar();
 			}

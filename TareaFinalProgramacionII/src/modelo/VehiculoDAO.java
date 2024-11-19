@@ -108,7 +108,7 @@ public class VehiculoDAO {
     }
     public boolean Consulta(String matr){
         boolean existe=false;
-        String sql="Select * FROM vehiculo where matricula="+matr;
+        String sql="Select * FROM vehiculo WHERE matricula="+matr;
         try{
             con=conbd.getConnection();
             stmt=con.createStatement();

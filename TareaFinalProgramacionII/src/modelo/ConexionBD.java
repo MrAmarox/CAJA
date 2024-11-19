@@ -9,7 +9,7 @@ class ConexionBD{
 	private String bd="alquileres";
 	private String user="root";
 	private String pswrd="root";
-	private String url="jdbc:mariadb://localhost/"+ bd;
+	private String url="jdbc:mariadb://localhost/"+bd;
 	private ConexionBD instance=null;
 
 	public ConexionBD() {
