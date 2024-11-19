@@ -58,13 +58,13 @@ public class Vista extends JFrame {
 		inicio();
 	}
 
-	public Vista(VehiculoDAO vehiculoDAO) {
+	/* public Vista(VehiculoDAO vehiculoDAO) {
 		this.vehiculoDAO = vehiculoDAO;
 		controladora = new Controladora(this,vehiculoDAO);
 		initComponents();
 		this.addControlador(controladora);
 		inicio();
-	}
+	} */
 
 	private void initComponents(){
 		setTitle("Alquileres");
@@ -174,7 +174,7 @@ public class Vista extends JFrame {
 		model.addColumn("Plazas");
 		model.addColumn("Año");
 
-		JButton btnmostrar = new JButton("Mostrar");
+		btnmostrar = new JButton("Mostrar");
 		btnmostrar.addActionListener(controladora);
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
