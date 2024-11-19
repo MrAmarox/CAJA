@@ -1,25 +1,24 @@
 package controladora;
-import modelo.Vehiculo;
-import modelo.VehiculoDAO;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
-import modelo.Vehiculo;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import org.w3c.dom.events.MouseEvent;
+import javax.swing.JOptionPane;
+import modelo.Vehiculo;
+import modelo.VehiculoDAO;
 
 public class Controladora implements ActionListener, MouseListener {
 
-    private Vista vista;
-	private VehiculoDAO vehiculoDAO;
+    private static Vista vista;
+	private static VehiculoDAO vehiculoDAO;
 	private Vehiculo vehiculo;
-
+	
 	public Controladora(Vista vista, VehiculoDAO vehiculoDAO) {
-		this.vista= vista;
-		this.vehiculoDAO= vehiculoDAO;
+		Controladora.vista= vista;
+		Controladora.vehiculoDAO= vehiculoDAO;
 	}
 
+    @Override
 	public void actionPerformed(ActionEvent e) {
 		String objeto= e.getActionCommand();
 		switch(objeto) {
@@ -62,7 +61,7 @@ public class Controladora implements ActionListener, MouseListener {
 	    		}
 			break;
 			case "Mostrar":
-				vista.cargarTabla(vehiculoDAO.getVehiculos());
+ 				vista.cargarTabla(vehiculoDAO.getVehiculos());
 				vista.Mostrar();
 			break;
 			case "Borrar":
@@ -103,7 +102,8 @@ public class Controladora implements ActionListener, MouseListener {
     public void mouseExited(java.awt.event.MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-	@Override
+	
+	/*@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
@@ -129,5 +129,5 @@ public class Controladora implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-	}
+	}*/
 }

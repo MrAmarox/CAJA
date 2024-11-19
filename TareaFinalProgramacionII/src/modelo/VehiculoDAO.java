@@ -13,14 +13,14 @@ public class VehiculoDAO {
 	private PreparedStatement pstmt= null;
 	private ResultSet rs= null;
 	private Connection con= null;
-	private ConexionBD conbd= null;
+	private ConexionBD conbd;
     private Vehiculo vehiculo;
 
     public VehiculoDAO(ConexionBD conbd){
         this.conbd=conbd;
     }
     public VehiculoDAO(){
-
+        conbd= new ConexionBD();
     }
     public ArrayList<Vehiculo> getVehiculos(){
         ArrayList<Vehiculo> vehiculos= new ArrayList<>();
@@ -174,5 +174,8 @@ public class VehiculoDAO {
 			
         }
         return vehiculo;
+    }
+    public void pene(){
+        System.out.println("merca");
     }
 }

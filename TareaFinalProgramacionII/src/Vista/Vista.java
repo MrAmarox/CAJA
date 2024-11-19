@@ -42,6 +42,7 @@ public final class Vista extends JFrame {
                         @Override
 			public void run() {
 				try {
+					vehiculoDAO= new VehiculoDAO();
 					Vista frame = new Vista(vehiculoDAO);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -302,7 +303,7 @@ public final class Vista extends JFrame {
 			btnagregar.setEnabled(true);
 			btnmod.setEnabled(false);
 			btndel.setEnabled(true);
-			btnmostrar.setEnabled(false);
+			//btnmostrar.setEnabled(false);
 			btnbuscar.setEnabled(true);
 			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
