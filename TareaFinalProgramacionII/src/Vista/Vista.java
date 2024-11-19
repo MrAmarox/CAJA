@@ -1,5 +1,6 @@
 package Vista;
 import modelo.Vehiculo;
+import modelo.VehiculoDAO;
 import controladora.Controladora;
 import java.awt.EventQueue;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class Vista extends JFrame {
 	private JScrollPane scrollpane;
 	private JPanel contentpane;
 	private Vehiculo vehiculo;
+	private VehiculoDAO vehiculoDAO;
 	private Controladora controladora;
 	/**
 	 * Launch the application.
@@ -51,7 +53,20 @@ public class Vista extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Vista() {
+	public Vista(){
+		initComponents();
+		inicio();
+	}
+
+	public Vista(VehiculoDAO vehiculoDAO) {
+		this.vehiculoDAO = vehiculoDAO;
+		controladora = new Controladora(this,vehiculoDAO);
+		initComponents();
+		this.addControlador(controladora);
+		inicio();
+	}
+
+	private void initComponents(){
 		setTitle("Alquileres");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 530);
@@ -60,90 +75,94 @@ public class Vista extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblmat = new JLabel("Matricula");
 		lblmat.setBounds(10, 11, 70, 20);
 		contentPane.add(lblmat);
-		
+
 		JLabel lblmarca = new JLabel("Marca");
 		lblmarca.setBounds(10, 36, 70, 20);
 		contentPane.add(lblmarca);
-		
+
 		JLabel lblmod = new JLabel("Modelo");
 		lblmod.setBounds(10, 61, 70, 20);
 		contentPane.add(lblmod);
-		
+
 		JLabel lblmalet = new JLabel("Maletero");
 		lblmalet.setBounds(10, 86, 70, 20);
 		contentPane.add(lblmalet);
-		
+
 		JLabel lblpuer = new JLabel("Puertas");
 		lblpuer.setBounds(10, 111, 70, 20);
 		contentPane.add(lblpuer);
-		
+
 		JLabel lblplaz = new JLabel("Plazas");
 		lblplaz.setBounds(10, 136, 70, 20);
 		contentPane.add(lblplaz);
-		
+
 		JLabel lblyear = new JLabel("Año");
 		lblyear.setBounds(10, 160, 70, 20);
 		contentPane.add(lblyear);
-		
+
 		txtmat = new JTextField();
 		txtmat.setBounds(100, 10, 180, 20);
 		contentPane.add(txtmat);
 		txtmat.setColumns(10);
-		
+
 		txtmarca = new JTextField();
 		txtmarca.setColumns(10);
 		txtmarca.setBounds(100, 35, 180, 20);
 		contentPane.add(txtmarca);
-		
+
 		txtmod = new JTextField();
 		txtmod.setColumns(10);
 		txtmod.setBounds(100, 60, 180, 20);
 		contentPane.add(txtmod);
-		
+
 		txtmalet = new JTextField();
 		txtmalet.setColumns(10);
 		txtmalet.setBounds(100, 85, 180, 20);
 		contentPane.add(txtmalet);
-		
+
 		txtpuer = new JTextField();
 		txtpuer.setColumns(10);
 		txtpuer.setBounds(100, 110, 180, 20);
 		contentPane.add(txtpuer);
-		
+
 		txtplaz = new JTextField();
 		txtplaz.setColumns(10);
 		txtplaz.setBounds(100, 135, 180, 20);
 		contentPane.add(txtplaz);
-		
+
 		txtyear = new JTextField();
 		txtyear.setColumns(10);
 		txtyear.setBounds(100, 160, 180, 20);
 		contentPane.add(txtyear);
-		
+
 		btnagregar = new JButton("Agregar");
+		btnagregar.addActionListener(controladora);
 		btnagregar.setBounds(296, 10, 120, 35);
 		contentPane.add(btnagregar);
-		
+
 		btndel = new JButton("Eliminar");
+		btndel.addActionListener(controladora);
 		btndel.setBounds(296, 55, 120, 35);
 		contentPane.add(btndel);
-		
-		JButton btnbuscar = new JButton("Buscar");
+
+		btnbuscar = new JButton("Buscar");
+		btnbuscar.addActionListener(controladora);
 		btnbuscar.setBounds(296, 100, 120, 35);
 		contentPane.add(btnbuscar);
-		
+
 		btnmod = new JButton("Modificar");
+		btnmod.addActionListener(controladora);
 		btnmod.setBounds(296, 145, 120, 35);
 		contentPane.add(btnmod);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 190, 414, 191);
 		contentPane.add(scrollPane);
-		
+
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		model = new DefaultTableModel();
@@ -156,13 +175,15 @@ public class Vista extends JFrame {
 		model.addColumn("Año");
 
 		JButton btnmostrar = new JButton("Mostrar");
+		btnmostrar.addActionListener(controladora);
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
-		
+
 		btnclear = new JButton("Borrar");
+		btnclear.addActionListener(controladora);
 		btnclear.setBounds(160, 430, 120, 35);
 		contentPane.add(btnclear);
-		
+
 		btnsalir = new JButton("Salir");
 		btnsalir.addActionListener(controladora);
 		btnsalir.setBounds(300, 430, 120, 35);

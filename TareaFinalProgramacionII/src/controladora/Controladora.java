@@ -49,7 +49,6 @@ public class Controladora implements ActionListener, MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		String objeto= e.getActionCommand();
 		switch(objeto) {
@@ -60,7 +59,7 @@ public class Controladora implements ActionListener, MouseListener {
                    }else{
                        vehiculoDAO.agregarVehiculo(vista.getVehiculo());
                        vista.borrar();
-                       vista.cargarTabla(vehiculoDAO.getVehiculos());
+                		vista.cargarTabla(vehiculoDAO.getVehiculos());
 		    	    }
 		    	}
 				break;
