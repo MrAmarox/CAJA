@@ -198,9 +198,10 @@ public class Vista extends JFrame {
             mat="";
         }else{
         mat = txtmat.getText();
-}       return mat;
+		}
+		return mat;
 	}
-		public void cargar(Vehiculo vehiculo){
+	public void cargar(Vehiculo vehiculo){
 		txtmat.setText(vehiculo.getMat());
 		txtmarca.setText(vehiculo.getMarca());
 		txtmod.setText(vehiculo.getMod());
@@ -208,7 +209,7 @@ public class Vista extends JFrame {
 		txtplaz.setText(String.valueOf(vehiculo.getPlaz()));
 		txtpuer.setText(String.valueOf(vehiculo.getPuer()));
 		txtyear.setText(String.valueOf(vehiculo.getYear()));
-		}
+	}
 
 		public void cargarTabla(ArrayList vehiculos){
 			if(vehiculos.size() == 0){
@@ -229,15 +230,14 @@ public class Vista extends JFrame {
 			}
 		}
 
-		public void borrar(){
-			txtmat.setText("");
-			txtmarca.setText("");
-			txtmod.setText("");
-			txtpuer.setText("");
-			txtplaz.setText("");
-			txtmalet.setText("");
-			txtyear.setText("");
-		}
+	public void borrar(){
+		txtmat.setText("");
+		txtmod.setText("");
+		txtpuer.setText("");
+		txtplaz.setText("");
+		txtmalet.setText("");
+		txtyear.setText("");
+	}
 
 		public void salir(){
 			System.exit(0);
