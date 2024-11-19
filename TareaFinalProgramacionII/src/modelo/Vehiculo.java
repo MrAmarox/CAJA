@@ -84,5 +84,8 @@ public void setYear(int year) {
 public void Mostrar(){
     System.out.println("Marca: "+marca+"\nModelo: "+mod+"\nMaletero: "+malet+"\nCantidad de puertas: "+puer+"\nPlazas: "+plaz+"\nAño: "+year+"\nMatricula: "+mat);
 }
+public String toString(){
+    return "Marca: "+marca+"\nModelo: "+mod+"\nMaletero: "+malet+"\nCantidad de puertas: "+puer+"\nPlazas: "+plaz+"\nAño: "+year+"\nMatricula: "+mat;
+}
 }
 

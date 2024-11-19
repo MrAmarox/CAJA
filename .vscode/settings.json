@@ -1,3 +1,37 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "database": "alquileres",
+            "username": "root",
+            "name": "proyecto"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "database": "alquileres",
+            "username": "root",
+            "name": "unnamed"
+        }
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "mariadb-java-client-3.5.0.jar",
+        "c:\\Users\\joaquin\\Downloads\\waffle-jna-3.5.0.jar",
+        "c:\\Users\\joaquin\\Downloads\\mariadb-java-client-3.5.0.jar"
+    ]
 }
