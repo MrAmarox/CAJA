@@ -1,5 +1,6 @@
 package Vista;
 import modelo.Vehiculo;
+import modelo.VehiculoDAO;
 import java.awt.EventQueue;
 import java.awt.ScrollPane;
 import java.util.ArrayList;
@@ -13,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import controladora.Controladora;
+
 import javax.swing.JScrollPane;
 
 public class Vista extends JFrame {
@@ -32,6 +36,7 @@ public class Vista extends JFrame {
 	private JScrollPane scrollpane;
 	private JPanel contentpane;
 	private Vehiculo vehiculo;
+	private Controladora controladora;
 	/**
 	 * Launch the application.
 	 */
@@ -136,9 +141,9 @@ public class Vista extends JFrame {
 		btnbuscar.setBounds(296, 100, 120, 35);
 		contentPane.add(btnbuscar);
 		
-		btnmod = new JButton("Modificar");
-		btnmod.setBounds(296, 145, 120, 35);
-		contentPane.add(btnmod);
+		btnmodificar = new JButton("Modificar");
+		btnmodificar.setBounds(296, 145, 120, 35);
+		contentPane.add(btnmodificar);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 190, 414, 191);
@@ -159,11 +164,12 @@ public class Vista extends JFrame {
 		btnmostrar.setBounds(10, 430, 120, 35);
 		contentPane.add(btnmostrar);
 		
-		btnclear = new JButton("Borrar");
-		btnclear.setBounds(160, 430, 120, 35);
-		contentPane.add(btnclear);
+		btndel = new JButton("Borrar");
+		btndel.setBounds(160, 430, 120, 35);
+		contentPane.add(btndel);
 		
 		btnsalir = new JButton("Salir");
+		btnsalir.addActionListener(controladora);
 		btnsalir.setBounds(300, 430, 120, 35);
 		contentPane.add(btnsalir);
 	}
@@ -210,7 +216,7 @@ public class Vista extends JFrame {
 			}
 			model.setRowCount(0);
 			for(int i = 0; i < vehiculos.size(); i++){
-				Object[] fila = {
+					Object[] fila = {
 					vehiculos.get(i).getMat(),
 					vehiculos.get(i).getMarca(),
 					vehiculos.get(i).getMod(),
@@ -236,12 +242,42 @@ public class Vista extends JFrame {
 		public void salir(){
 			System.exit(0);
 		}
+		
 		public void inicio(){
 			btnagregar.setEnabled(true);
 			btnmodificar.setEnabled(false);
 			btndel.setEnabled(true);
+			btnmostrar.setEnabled(true);
 			btnbuscar.setEnabled(true);
 			btnborrar.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}
+		public void Buscar(){
+			btnagregar.setEnabled(false);
+			btnmodificar.setEnabled(true);
+			btndel.setEnabled(true);
+			btnmostrar.setEnabled(true);
+			btnbuscar.setEnabled(true);
+			btnborrar.setEnabled(true);
+			btnsalir.setEnabled(true);
+		}
+		public void modificarEliminar(){
+			btnagregar.setEnabled(false);
+			btnmodificar.setEnabled(true);
+			btndel.setEnabled(true);
+			btnmostrar.setEnabled(true);
+			btnbuscar.setEnabled(false);
+			btnborrar.setEnabled(true);
+			btnsalir.setEnabled(true);
+		}
+		public void Mostrar(){
+			btnagregar.setEnabled(true);
+			btnmodificar.setEnabled(false);
+			btndel.setEnabled(false);
+			btnmostrar.setEnabled(true);
+			btnbuscar.setEnabled(false);
+			btnborrar.setEnabled(true);
+			btnsalir.setEnabled(true);
+		}
+
 }

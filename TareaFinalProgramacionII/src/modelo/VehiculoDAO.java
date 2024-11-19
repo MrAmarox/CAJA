@@ -117,8 +117,8 @@ public class VehiculoDAO {
         }
     }
 
-    public ArrayList<Vehiculo>getVehiculos(){
-        ArrayList<Vehiculo> vehiculos= new ArrayList();
+    public ArrayList <Vehiculo>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        getVehiculos(){
+        ArrayList<Vehiculo> vehiculos= new ArrayList<>();
         String sql="SELECT matricula, marca, modelo, puertas, plazas, maletero, año";
         try {
             con= conbd.getConnection();
@@ -135,7 +135,7 @@ public class VehiculoDAO {
         }
         return vehiculos;
     }
-    public Vehiculo getVehiculo(String mat){
+    public void getVehiculo(String mat){
         String sql="SELECT * FROM vehiculo WHERE matricula="+mat;
         try{
             con= conbd.getConnection();
@@ -159,8 +159,7 @@ public class VehiculoDAO {
 
 		}catch(SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-
+			
         }
-        return vehiculo;
     }
 }
