@@ -29,19 +29,20 @@ public class Vista extends JFrame {
 	private JTable table;
 	private DefaultTableModel model;
 	private JButton btnagregar, btndel, btnbuscar, btnmod, btnmostrar, btnclear, btnsalir;
-	private JScrollPane scrollpane;
+	private JScrollPane scrollPane;
 	private JPanel contentpane;
 	private Vehiculo vehiculo;
 	private VehiculoDAO vehiculoDAO;
 	private Controladora controladora;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Vista frame = new Vista();
+	private static Vista frame;
+		/**
+		 * Launch the application.
+		 */
+		public static void main(String[] args) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						frame = new Vista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,6 +68,7 @@ public class Vista extends JFrame {
 	} */
 
 	private void initComponents(){
+		controladora = new Controladora( frame, vehiculoDAO);
 		setTitle("Alquileres");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 530);
@@ -159,7 +161,7 @@ public class Vista extends JFrame {
 		btnmod.setBounds(296, 145, 120, 35);
 		contentPane.add(btnmod);
 
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 190, 414, 191);
 		contentPane.add(scrollPane);
 
@@ -217,15 +219,7 @@ public class Vista extends JFrame {
 		}
 		return mat;
 	}
-	private void addControlador(Controladora controladora){
-		this.btnclear.addActionListener(controladora);
-		this.btnbuscar.addActionListener(controladora);
-		this.btnmod.addActionListener(controladora);
-		this.btndel.addActionListener(controladora);
-		this.btnagregar.addActionListener(controladora);
-		this.btnmostrar.addActionListener(controladora);
-		this.btnsalir.addActionListener(controladora);
-	}
+
 
 	public void cargar(Vehiculo vehiculo){
 		txtmat.setText(vehiculo.getMat());
