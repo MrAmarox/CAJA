@@ -78,7 +78,7 @@ public class Controladora implements ActionListener, MouseListener {
 			case "Buscar":
 			    if (vehiculoDAO.Consulta(vista.getMat())){
 			    	vista.cargar(vehiculoDAO.getVehiculo(vista.getMat()));
-                    vista.buscar();
+                    vista.Buscar();
 		    	}else{
 		    		JOptionPane.showMessageDialog(null, "Ingrese una matrícula existente.");
 	    		}
