@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-class ConexionBD{
+public class ConexionBD{
 	private ConexionBD instance=null;
 	private Connection conexion;
 	private String bd="alquileres";

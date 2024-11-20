@@ -1,6 +1,8 @@
 package Vista;
 import controladora.Controladora;
 import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -129,16 +131,43 @@ public final class Vista extends JFrame {
 		txtpuer.setColumns(10);
 		txtpuer.setBounds(100, 110, 180, 20);
 		contentPane.add(txtpuer);
+		txtpuer.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				if(!Character.isDigit(c)){
+					e.consume();
+				}
+			}
+        });
 
 		txtplaz = new JTextField();
 		txtplaz.setColumns(10);
 		txtplaz.setBounds(100, 135, 180, 20);
 		contentPane.add(txtplaz);
+		txtplaz.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				if(!Character.isDigit(c)){
+					e.consume();
+				}
+			}
+        });
 
 		txtyear = new JTextField();
 		txtyear.setColumns(10);
 		txtyear.setBounds(100, 160, 180, 20);
 		contentPane.add(txtyear);
+		txtyear.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				if(!Character.isDigit(c)){
+					e.consume();
+				}
+			}
+        });
 
 		btnagregar = new JButton("Agregar");
 		btnagregar.addActionListener(controladora);
@@ -230,14 +259,14 @@ public final class Vista extends JFrame {
 	}
 
 
-	public void cargar(Vehiculo vehiculo){
-		txtmat.setText(vehiculo.getMat());
-		txtmarca.setText(vehiculo.getMarca());
-		txtmod.setText(vehiculo.getMod());
-		txtmalet.setText(vehiculo.getMalet());
-		txtplaz.setText(String.valueOf(vehiculo.getPlaz()));
-		txtpuer.setText(String.valueOf(vehiculo.getPuer()));
-		txtyear.setText(String.valueOf(vehiculo.getYear()));
+	public void cargar(Vehiculo vcl){
+		txtmat.setText(vcl.getMat());
+		txtmarca.setText(vcl.getMarca());
+		txtmod.setText(vcl.getMod());
+		txtmalet.setText(vcl.getMalet());
+		txtplaz.setText(String.valueOf(vcl.getPlaz()));
+		txtpuer.setText(String.valueOf(vcl.getPuer()));
+		txtyear.setText(String.valueOf(vcl.getYear()));
 	}
 
 		public void cargarTabla (ArrayList<Vehiculo> vehiculos){
@@ -301,8 +330,8 @@ public final class Vista extends JFrame {
 		public void inicio(){
 			btnagregar.setEnabled(true);
 			btnmod.setEnabled(false);
-			btndel.setEnabled(true);
-			//btnmostrar.setEnabled(false);
+			btndel.setEnabled(false);
+			btnmostrar.setEnabled(true);
 			btnbuscar.setEnabled(true);
 			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
@@ -317,20 +346,20 @@ public final class Vista extends JFrame {
 			btnsalir.setEnabled(true);
 		}
 		public void modificarEliminar(){
-			btnagregar.setEnabled(false);
+			btnagregar.setEnabled(true);
 			btnmod.setEnabled(true);
 			btndel.setEnabled(true);
 			btnmostrar.setEnabled(true);
-			btnbuscar.setEnabled(false);
+			btnbuscar.setEnabled(true);
 			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}
 		public void Mostrar(){
 			btnagregar.setEnabled(true);
-			btnmod.setEnabled(false);
-			btndel.setEnabled(false);
+			btnmod.setEnabled(true);
+			btndel.setEnabled(true);
 			btnmostrar.setEnabled(true);
-			btnbuscar.setEnabled(false);
+			btnbuscar.setEnabled(true);
 			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}

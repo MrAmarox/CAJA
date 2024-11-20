@@ -54,7 +54,7 @@ public class VehiculoDAO {
         return vehiculos;
     }
 
-    public void modVehiculo(Vehiculo vehiculo){
+    public void modVehiculo(Vehiculo vehiculo, String mat){
         String sql="UPDATE Vehiculo SET marca=?, modelo=?, puertas=?, plazas=?, maletero=?, año=? where matricula=?;";
         try{
             con=conbd.getConnection();
@@ -65,7 +65,7 @@ public class VehiculoDAO {
             pstmt.setInt(4, vehiculo.getPlaz());
             pstmt.setString(5, vehiculo.getMalet());
             pstmt.setInt(6, vehiculo.getYear());
-            pstmt.setString(7, vehiculo.getMat());
+            pstmt.setString(7, mat);
             int res= pstmt.executeUpdate();
             if(res!=0 ){
                 JOptionPane.showMessageDialog(null, "Modificación exitosa.");
@@ -108,13 +108,13 @@ public class VehiculoDAO {
     }
     public boolean Consulta(String matr){
         boolean existe=false;
-        String sql="Select * FROM vehiculo WHERE matricula="+matr+";";
+        String sql="Select * FROM vehiculo";
         try{
             con=conbd.getConnection();
             stmt=con.createStatement();
             rs= stmt.executeQuery(sql);
-            if(rs.next()){
-                String matCheck= rs.getString("matricula");
+            while(rs.next()){
+                String matCheck= rs.getString(1);
                 if(matCheck.equals(matr)){
                     existe=true;
                 }
@@ -134,7 +134,7 @@ public class VehiculoDAO {
         try{
             con= conbd.getConnection();
             stmt= con.createStatement();
-            stmt.execute("DELETE FROM vehiculo WHERE matricula="+matr+";");
+            stmt.execute("DELETE FROM vehiculo WHERE matricula=\""+matr+"\";");
 			JOptionPane.showMessageDialog(null, "Vehículo removido con éxito.");
 			stmt.close();
 			con.close();
@@ -150,11 +150,14 @@ public class VehiculoDAO {
         return done;
     }
     public Vehiculo getVehiculo(String mat){
+       String sql="SELECT * FROM vehiculo WHERE matricula=\""+mat+"\";";
         try{
             con= conbd.getConnection();
-			stmt= con.createStatement();
-			rs= stmt.executeQuery("SELECT * FROM vehiculo where matricula="+mat+";");
+			stmt= con.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE,
+                                      ResultSet.CONCUR_UPDATABLE);
+			rs= stmt.executeQuery(sql);
             if(rs.next()){
+                rs.last();
                 vehiculo= new Vehiculo(
                     rs.getString(1),
                     rs.getString(2),
