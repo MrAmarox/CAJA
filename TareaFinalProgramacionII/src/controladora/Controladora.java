@@ -81,27 +81,27 @@ public class Controladora implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     @Override
     public void mousePressed(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     @Override
     public void mouseReleased(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     @Override
     public void mouseEntered(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     @Override
     public void mouseExited(java.awt.event.MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 	
 	@Override

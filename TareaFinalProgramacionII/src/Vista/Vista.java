@@ -327,10 +327,10 @@ public final class Vista extends JFrame {
 		}
 		public void Mostrar(){
 			btnagregar.setEnabled(true);
-			btnmod.setEnabled(false);
-			btndel.setEnabled(false);
+			btnmod.setEnabled(true);
+			btndel.setEnabled(true);
 			btnmostrar.setEnabled(true);
-			btnbuscar.setEnabled(false);
+			btnbuscar.setEnabled(true);
 			btnclear.setEnabled(true);
 			btnsalir.setEnabled(true);
 		}

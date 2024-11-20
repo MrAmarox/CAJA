@@ -108,13 +108,13 @@ public class VehiculoDAO {
     }
     public boolean Consulta(String matr){
         boolean existe=false;
-        String sql="Select * FROM vehiculo WHERE matricula="+matr+";";
+        String sql="Select * FROM vehiculo where matricula= "+matr+";";
         try{
             con=conbd.getConnection();
             stmt=con.createStatement();
             rs= stmt.executeQuery(sql);
             if(rs.next()){
-                String matCheck= rs.getString("matricula");
+                String matCheck= rs.getString(1);
                 if(matCheck.equals(matr)){
                     existe=true;
                 }
@@ -127,14 +127,14 @@ public class VehiculoDAO {
             System.err.println(e.getMessage());
             e.printStackTrace();
 		}
-		return existe;
+        return existe;
     }
     public boolean delVehiculo(String matr){
         boolean done = false;
         try{
             con= conbd.getConnection();
             stmt= con.createStatement();
-            stmt.execute("DELETE FROM vehiculo WHERE matricula="+matr+";");
+            stmt.execute("DELETE FROM vehiculo WHERE matricula=\""+matr+"\";");
 			JOptionPane.showMessageDialog(null, "Vehículo removido con éxito.");
 			stmt.close();
 			con.close();
@@ -150,10 +150,11 @@ public class VehiculoDAO {
         return done;
     }
     public Vehiculo getVehiculo(String mat){
+        String sql= "SELECT * FROM vehiculo where matricula= "+mat+";";
         try{
             con= conbd.getConnection();
 			stmt= con.createStatement();
-			rs= stmt.executeQuery("SELECT * FROM vehiculo where matricula="+mat+";");
+			rs= stmt.executeQuery(sql);
             if(rs.next()){
                 vehiculo= new Vehiculo(
                     rs.getString(1),
