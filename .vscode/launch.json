@@ -9,6 +9,13 @@
             "name": "Vista",
             "request": "launch",
             "mainClass": "Vista.Vista",
+            "projectName": "CAJA_f21d647"
+        },
+        {
+            "type": "java",
+            "name": "Vista",
+            "request": "launch",
+            "mainClass": "Vista.Vista",
             "projectName": "CAJA_5b723fb3"
         },
         {
